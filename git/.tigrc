@@ -1,0 +1,32 @@
+# .tigrc
+
+# views.
+set main-view  = line-number:yes,interval=1 id date author:email-user commit-title:graph=yes,refs=yes
+set blame-view = date:default author:email-user id:yes,color line-number:yes,interval=1 text
+set pager-view = line-number:yes,interval=1 text
+set stage-view = line-number:yes,interval=1 text
+set log-view   = line-number:yes,interval=1 text
+set blob-view  = line-number:yes,interval=1 text
+set diff-view  = line-number:yes,interval=1 text:yes,commit-title-overflow=no
+
+# split.
+set vertical-split = yes
+
+# tab size.
+set tab-size = 1
+
+# enable mouse.
+set mouse = true
+
+# diff-context show line.
+set diff-context = 1
+
+bind status P !git push origin
+
+# reset hard
+bind status <Ctrl-r> ?git reset --hard HEAD
+
+# checkout -b
+bind branch B ?git checkout -b "%(prompt Enter new branch name:)" %(branch)
+bind main   B ?git checkout -b "%(prompt Enter new branch name: )"
+
