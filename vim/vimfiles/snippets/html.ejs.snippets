@@ -1,0 +1,94 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet ejs-tag "[EJS] <%= $1 %>" i
+<%= $1 %>
+endsnippet
+
+snippet ejs-json-stringify "[EJS] JSON.stringify" i
+<%= JSON.stringify(data.news,null,2) %>
+endsnippet
+
+snippet ejs-include "[EJS] include" i
+<%- include('$1') -%>
+endsnippet
+
+snippet ejs-include-obj "[EJS] include with object" i
+<%- include('$1',{ $2 : '$3' }) -%>
+endsnippet
+
+snippet ejs-if "[EJS] if"
+<%_ if($1) { _%>
+  $2
+<%_ } _%>
+endsnippet
+
+snippet ejs-if-undefined "[EJS] if undefined var"
+<%_ if(typeof ${1} !== 'undefined' && $1) { _%>
+  $2
+<%_ } _%>
+endsnippet
+
+snippet ejs-forEach "[EJS] forEach"
+<%_ $1.forEach(function (val) { _%>
+	<%= val %>
+  $2
+<%_ }); _%>
+endsnippet
+
+snippet ejs-for "[EJS] for"
+<% for (var i = 0; i < 10; i++) { %>
+  $1
+<% } %>
+endsnippet
+
+snippet ejs-for "[EJS] for advanced"
+<% var ary = ['item1', 'item2', 'item3'] %>
+
+<% for(var i = 0; i < ary.length; ++i) {%>
+  <%= ary[i] %>
+  $1
+<% } %>
+endsnippet
+
+snippet ejs-for-in "[EJS] for in"
+<% var ary = ['item1', 'item2', 'item3'] %>
+
+<% for (var key in ary) { %>
+  <%= ary[key] %>
+  $1
+<% } %>
+endsnippet
+
+snippet ejs-for-of "[EJS] for of"
+<% var ary = ['item1', 'item2', 'item3'] %>
+
+<% for (var item of ary) { %>
+  <%= item %>
+  $1
+<% } %>
+endsnippet
+

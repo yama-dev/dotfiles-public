@@ -1,0 +1,182 @@
+# Util.
+[[plugins]]
+repo = 'equalsraf/neovim-gui-shim'
+on_if = 'has("nvim")'
+
+[[plugins]]
+repo = 'alvan/vim-closetag'
+on_ft = ['html', 'html.ejs', 'xhtml']
+hook_add = '''
+let g:closetag_filenames='*.html,*.ejs'
+let g:closetag_filetypes='html,html.ejs,ejs'
+let g:closetag_emptyTags_caseSensitive=1
+let g:closetag_shortcut='>'
+'''
+
+[[plugins]]
+repo = 'szw/vim-tags'
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+hook_add = '''
+set tags=tags;
+let g:tagbar_left = 0
+let g:tagbar_width = 60
+let g:tagbar_autoclose = 0
+let g:tagbar_autofocus = 0
+let g:tagbar_show_linenumbers = 1
+let g:tagbar_sort = 0
+let g:tagbar_type_javascript = {
+  \  'ctagstype' : 'JavaScript',
+  \  'kinds' : [
+  \     'C:constants',
+  \     'c:classes',
+  \     'f:functions',
+  \     'm:methods',
+  \     'p:properties',
+  \     'v:global variables',
+  \     'g:generators'
+  \  ]
+  \}
+  let g:tagbar_type_html = {
+  \  'ctagstype' : 'Html',
+  \  'kinds' : [
+  \    'a:named anchors',
+  \    'h:H1 headings',
+  \    'i:H2 headings',
+  \    'j:H3 headings'
+  \  ]
+  \}
+  let g:tagbar_type_scss = {
+  \  'ctagstype' : 'css',
+  \  'kinds' : [
+  \    'v:variables',
+  \    'c:classes',
+  \    'i:identities',
+  \    't:tags',
+  \    'm:medias'
+  \  ]
+  \}
+noremap <space>l :Tagbar<CR>
+'''
+
+# HTML, CSS
+[[plugins]]
+repo = 'othree/html5.vim'
+on_ft = ['html']
+hook_add = '''
+  let g:html5_event_handler_attributes_complete = 1
+  let g:html5_rdfa_attributes_complete = 1
+  let g:html5_microdata_attributes_complete = 1
+  let g:html5_aria_attributes_complete = 1
+'''
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html','vue','scss','css','sass']
+hook_add = '''
+let g:user_emmet_leader_key='<C-e>'
+'''
+
+[[plugins]]
+repo = 'slim-template/vim-slim'
+on_ft = ['slim']
+hook_add = '''
+  autocmd BufRead,BufNewFile *.slim setfiletype slim
+'''
+
+[[plugins]]
+repo = 'nikvdp/ejs-syntax'
+on_ft = ['ejs', 'html', 'html.ejs']
+
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+on_ft = ['css','scss','sass','less']
+
+# javascript, typescript
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['javascript','typescript','javascriptreact','typescriptreact']
+hook_add = '''
+syntax on
+'''
+
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = ['javascript','javascriptreact']
+
+[[plugins]]
+repo = 'othree/javascript-libraries-syntax.vim'
+on_ft = ['javascript']
+hook_add = '''
+  let g:used_javascript_libs = 'jquery,react,handlebars,vue'
+'''
+
+# React
+[[plugins]]
+repo = 'maxmellon/vim-jsx-pretty'
+on_ft = ['javascriptreact','typescriptreact']
+
+# TypeScript Syntax
+# [[plugins]]
+# repo = 'HerringtonDarkholme/yats.vim'
+# on_ft = ['typescript','typescriptreact']
+
+# [[plugins]]
+# repo = 'styled-components/vim-styled-components'
+# on_ft = ['javascript']
+
+# # Vue
+# [[plugins]]
+# repo = 'posva/vim-vue'
+# on_ft = ['javascript','vue']
+# hook_add = '''
+# autocmd FileType vue syntax sync fromstart
+# let g:vue_pre_processors = ['pug', 'scss']
+# '''
+
+# Nodejs
+[[plugins]]
+repo = 'moll/vim-node'
+on_ft = ['javascript']
+
+# GLSL
+[[plugins]]
+repo = 'tikhomirov/vim-glsl'
+on_ft = ['glsl']
+
+# php
+[[plugins]]
+repo = 'sudar/vim-wordpress-snippets'
+on_ft = ['html','php']
+
+[[plugins]]
+repo = 'nelsyeung/twig.vim'
+on_ft = ['html','php','twig']
+
+# json
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = ['json', 'jsonp', 'html', 'html.ejs', 'xhtml']
+hook_add = '''
+  let g:vim_json_syntax_conceal = 0
+'''
+
+# toml.
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+hook_add = '''
+  autocmd BufRead,BufNewFile,BufReadPre *.toml set filetype=toml
+'''
+
+# Docker
+[[plugins]]
+repo = 'danishprakash/vim-docker'
+on_ft = ['toml','yaml']
+
+# c
+[[plugins]]
+repo = 'vim-jp/cpp-vim'
+on_ft = ['c','cpp']
+

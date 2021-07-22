@@ -1,0 +1,401 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet	font_family_styles_set:css "font-family, text-size-adjust, font-smoothing"
+// Font全般
+@import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+font-family: "Noto Sans Japanese", "游ゴシック",YuGothic,"Helvetica","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "Helvetica Neue", Arial, sans-serif;
+font-family: "游ゴシック",YuGothic,"Helvetica","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "Helvetica Neue", Arial, sans-serif;
+font-family: "游明朝", "YuMincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ 明朝", "ＭＳ Ｐ明朝", serif;
+font-family: "Helvetica Neue", Helvetica, Arial, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "游ゴシック", YuGothic, "メイリオ", Meiryo, sans-serif;
+
+// Mobileでのフォント自動調整の設定
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+
+// Macでのアンチエイリアス設定
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+endsnippet
+
+snippet	font_styles_set:css "font-size, font-weight, letter-spacing, line-height"
+font-size: ${1:16}px;
+font-weight: bold;
+letter-spacing: -0.01em;
+line-height: 1.6em;
+endsnippet
+
+snippet	animation_keyframe:css "animation, keyframe"
+@keyframes ${1:#:animation_name} {
+  0% {
+    opacity: 0;
+    transform: rotate(90deg) translateY(200px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-90deg) translateY(200px);
+  }
+}
+animation: $1 ${2:#:time}s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0s infinite alternate; // easeInCubic
+animation: $1 $2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s infinite alternate;  // easeOutCubic
+animation: $1 $2s cubic-bezier(0.645, 0.045, 0.355, 1) 0s infinite alternate; // easeInOutCubic
+endsnippet
+
+snippet	transform_transition:css "transform, transition"
+transform: translate(10%,10%);
+transform: translateX(-100%);
+transform: translateY(-100%);
+transition: transform ${1}s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0s; // easeInCubic
+transition: transform $1s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;    // easeOutCubic
+transition: transform $1s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;   // easeInOutCubic
+endsnippet
+
+snippet	before:css "&::before { ... }"
+&::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: .6;
+}
+endsnippet
+
+snippet	after:css "&::after { ... }"
+&::after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: .6;
+}
+endsnippet
+
+snippet	inline_block:css "inline-block"
+ul {
+  letter-spacing: -.4em;
+  text-align: center;
+  font-size: 0;
+  li {
+    display: inline-block;
+    letter-spacing: normal;
+    vertical-align: top;
+  }
+}
+endsnippet
+
+snippet	relative:css "position: relative;"
+position: relative;
+top: ${1};
+left: ${2};
+${0}
+endsnippet
+
+snippet	absolute:css "position: absolute;"
+position: absolute;
+top: ${1};
+left: ${2};
+${0}
+endsnippet
+
+snippet	fixed:css "position: fixed;"
+position: fixed;
+top: ${1};
+left: ${2};
+${0}
+endsnippet
+
+snippet	mediaquery:css "@media screen and (...) { ... }"
+@media screen and (min-width:480px) {
+}
+@media screen and (min-width:768px) and ( max-width:1024px) {
+}
+@media screen and (min-width:1024px) {
+}
+endsnippet
+
+snippet	design_overlay:css "Design Overlay"
+.design {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .5;
+  z-index: 10;
+}
+endsnippet
+
+snippet	design_overlay--sp:css "Design Overlay Sp"
+.design {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .5;
+  z-index: 10;
+  img {
+    width: 100%;
+  }
+}
+endsnippet
+
+snippet	3dots_reader_1:css "三点リーダー(1行)"
+overflow: hidden;
+width: 100%;
+p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+endsnippet
+
+snippet	3dots_reader_multi_webkit "三点リーダー(複数行)"
+overflow: hidden;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+endsnippet
+
+snippet	3dots_reader_multi_ie "三点リーダー(複数行)"
+position: relative;
+overflow: hidden;
+// Variables
+$container-bg: #fff;
+$font-size-base: 1.7rem;
+$line-height-computed: 1.4;
+$lines-to-show: 2;
+font-size: $font-size-base;
+height: $font-size-base * $line-height-computed * $lines-to-show;
+line-height: $line-height-computed;
+&:before,
+&:after {
+  background: #fff;
+  position: absolute;
+}
+&:before {
+  content: "...";
+  top: $font-size-base * $line-height-computed * ($lines-to-show - 1);
+  right: 0;
+}
+&:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+}
+endsnippet
+
+snippet	gradient:css "linear-gradient, radial-gradient, repeating-linear-gradient"
+/* https://developer.mozilla.org/ja/docs/Web/Guide/CSS/Using_CSS_gradients */
+
+/* シンプル */
+background: linear-gradient(to bottom, blue, white 80%, orange);
+background: linear-gradient(70deg, black, white);
+
+/* 画像の上に透過グラデーション */
+background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1)), url(http://foo.com/image.jpg);
+
+/* 繰り返し */
+background: repeating-linear-gradient(-45deg, red, red 5px, white 5px, white 10px);
+
+/* 格子状 */
+background-color: #000;
+background-image: repeating-linear-gradient(90deg, transparent, transparent 50px,
+  rgba(255, 127, 0, 0.25) 50px, rgba(255, 127, 0, 0.25) 56px, transparent 56px, transparent 63px,
+  rgba(255, 127, 0, 0.25) 63px, rgba(255, 127, 0, 0.25) 69px, transparent 69px, transparent 116px,
+  rgba(255, 206, 0, 0.25) 116px, rgba(255, 206, 0, 0.25) 166px),
+repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(255, 127, 0, 0.25) 50px,
+  rgba(255, 127, 0, 0.25) 56px, transparent 56px, transparent 63px, rgba(255, 127, 0, 0.25) 63px,
+  rgba(255, 127, 0, 0.25) 69px, transparent 69px, transparent 116px, rgba(255, 206, 0, 0.25) 116px,
+  rgba(255, 206, 0, 0.25) 166px),
+repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(143, 77, 63, 0.25) 5px,
+  rgba(143, 77, 63, 0.25) 10px),
+repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(143, 77, 63, 0.25) 5px,
+  rgba(143, 77, 63, 0.25) 10px);
+
+/* 放射状 */
+background: radial-gradient(red, yellow, rgb(30, 144, 255));
+background: repeating-radial-gradient(black, black 5px, white 5px, white 10px);
+endsnippet
+
+snippet	center_margin:css "position: absolute; left: 50%; width: 200px; margin-left: -100px;"
+${1:div} {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -100px;
+}
+endsnippet
+
+snippet	center_transform50:css "transform: translate(-50%, -50%);"
+${1:div} {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  transform: translate3d(-50%, -50%, 0);
+  backface-visibility: hidden;
+}
+endsnippet
+
+snippet	center_calc50:css "calc(50% - 0px)"
+${1:div} {
+  margin: calc(50% - ${1}px) auto;
+}
+
+snippet	form_elem_initialize:css "{ appearance: none; ... }"
+input,
+button,
+textarea,
+select {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+endsnippet
+
+snippet	input_animation:css "focus animation { ... &:focus { ... } }"
+input[type="text"] {
+  outline: none;
+  border: 1px solid #aaa;
+  transition: all .3s ease 0s;
+  &:focus {
+    box-shadow: 0 0 7px #1abc9c;
+    border: 1px solid #1abc9c;
+  }
+}
+endsnippet
+
+snippet	animation_textarea:css "focus animation { ... &:focus { ... } }"
+textarea {
+  outline: none;
+  border: 1px solid #aaa;
+  transition: all .3s ease 0s;
+  &:focus {
+    box-shadow: 0 0 7px #1abc9c;
+    border: 1px solid #1abc9c;
+  }
+}
+endsnippet
+
+snippet	iframe_wrapper:css "responds to iframe { padding-bottom: 56.25%; ... iframe { ... } }"
+.iframe__wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+endsnippet
+
+snippet	blockquote:css
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: .5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+  &::before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: .1em;
+    margin-right: .25em;
+    vertical-align: -.4em;
+  }
+  p {
+    display: inline;
+  }
+}
+endsnippet
+
+snippet	highlight:css "text highlight color | ::selection { background: ... ; }"
+::selection { background: #e2eae2; }
+::-moz-selection { background: #e2eae2; }
+::-webkit-selection { background: #e2eae2; }
+endsnippet
+
+snippet	margin:0:auto:css "maring: 0 auto;"
+margin: 0 auto;${0}
+endsnippet
+
+snippet	margin:top:css "maring-top: $1;"
+margin-top: ${1};${0}
+endsnippet
+
+snippet	margin:bottom:css "maring-bottom: $1;"
+margin-bottom: ${1};${0}
+endsnippet
+
+snippet	pc:scss "Sass Mixin @include 'pc'"
+@include pc {
+  ${1}
+}
+endsnippet
+
+snippet	sp:scss "Sass Mixin @include 'sp'"
+@include sp {
+  ${1}
+}
+endsnippet
+
+snippet	flex:1:css "flex 1" b
+display: flex;${0}
+endsnippet
+
+snippet	flex:2:css "flex 2" b
+display: flex;
+flex-wrap: ${1|nowrap,wrap,wrap-reverse|};
+justify-content: ${2|flex-start,flex-end,center,space-between,space-around|};
+align-items: ${3|stretch,center,flex-start,flex-end|};
+endsnippet
+
+snippet	flex:3:css "flex 3" b
+display: flex;
+flex-wrap: ${1|nowrap,wrap,wrap-reverse|};
+justify-content: ${2|flex-start,flex-end,center,space-between,space-around|};
+align-items: ${3|stretch,center,flex-start,flex-end|};
+align-content: ${4|stretch,flex-start,flex-end,center,space-between,space-around|};
+flex-direction: ${5|row,row-reverse|};${0}
+endsnippet
+

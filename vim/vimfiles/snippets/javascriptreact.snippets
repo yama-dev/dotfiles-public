@@ -1,0 +1,569 @@
+# A valid snippet should starts with:
+#
+#   snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#   endsnippet
+#
+# Snippet options:
+#
+#   b - Beginning of line.
+#   i - In-word expansion.
+#   w - Word boundary.
+#   r - Regular expression
+#   e - Custom context snippet
+#   A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#   snippet emitter "emitter properties" b
+#   private readonly ${1} = new Emitter<$2>()
+#   public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#   endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet commentout_v1:js "v1"
+/*!
+  * JavaScript Library v1.0.0
+  * https://github.com/yama-dev/
+  * Copyright yama-dev
+  * Released under the MIT license
+  * Date: 2022-01-01
+  */
+${0}
+endsnippet
+
+snippet commentout_v2:js "v2"
+/**
+  * ${0}
+  *
+  * @attribute videoId
+  * @type string
+  * @default ''
+  */
+${0}
+endsnippet
+
+snippet commentout_v3:js "v3"
+/**
+  * ${0}
+  *
+  * https://github.com/yama-dev/
+  * Copyright yama-dev
+  * Licensed under the MIT license.
+  *
+  * let or const | str
+  * name | function | 関数 ( ex.name(null, null, null); )
+  */
+${0}
+endsnippet
+
+# ---
+# Vanilla
+# ---
+
+snippet class:js "class構文(es6)"
+class ${1:#:class_name} {
+  constructor(){
+    if(!window.console) {window.console = { log: function(msg){} };}
+    this.Init();
+  }
+  Init(){
+    ${0}
+  }
+}
+endsnippet
+
+snippet import:js "import構文(es6)"
+import $ from "jquery";
+window.jQuery = window.$ = $;
+require('bootstrap');
+import 'velocity-animate';
+import _ from 'lodash';
+import { API_METHOD, API_URL } from './_config.es6';
+endsnippet
+
+snippet export:js "export構文(es6)"
+export default class ${1:#:class_name} {
+  constructor(url) {
+    this.url      = url;
+    this.htmlText = '';
+  }
+  Init() {
+    ${0}
+  }
+}
+endsnippet
+
+snippet querySelector:js "document select"
+document.querySelector(${1});
+${0}
+endsnippet
+
+snippet querySelectorAll:js "document select all"
+document.querySelectorAll(${1});
+${0}
+endsnippet
+
+snippet offset:js "Get offsets of document(javascript)"
+let offsetTop = document.querySelector(${1}).offsetTop;
+let offsetLeft = document.querySelector($1).offsetLeft;
+${0}
+endsnippet
+
+snippet scrolltop:js "Get scroll position of window(javascript)"
+let scrollTop = window.pageYOffset;
+${0}
+endsnippet
+
+snippet width:js "Get width of element"
+document.clientWidth; // paddingを含んだ幅
+document.scrollWidth; // paddingを含んだ画面上に表示されていないコンテンツを含む幅
+document.offsetWidth; // border、padding、スクロールバーを含んだ幅
+${0}
+endsnippet
+
+snippet height:js "Get height of element"
+document.clientHeight; // paddingを含んだ高さ
+document.scrollHeight; // paddingを含んだ画面上に表示されていないコンテンツを含む高さ
+document.offsetHeight; // border、padding、スクロールバーを含んだ高さ
+${0}
+endsnippet
+
+snippet window_size:js "Get width and height of window"
+window.innerWidth;  // スクロールバーを含まないウィンドウの幅
+window.innerHeight; // スクロールバーを含まないウィンドウの高さ
+window.outerWidth;  // スクロールバーを含んだウィンドウの幅
+window.outerHeight; // スクロールバーを含んだウィンドウの高さ
+${0}
+endsnippet
+
+snippet addEventListener([all]):js
+${1}.addEventListener('${2:click}', (event) => {
+  ${3}
+});
+endsnippet
+
+snippet addEventListener(click):js
+${1}.addEventListener('click', (event) => {
+  ${2}
+});
+endsnippet
+
+snippet addEventListener(DOMContentLoaded):js
+document.addEventListener('DOMContentLoaded', function(event) {
+  ${1}
+});
+endsnippet
+
+snippet addEventListener(load):js
+window.addEventListener('load', (event) => {
+  ${1}
+});
+endsnippet
+
+snippet addEventListener(scroll):js
+window.addEventListener('scroll', (event) => {
+  ${1}
+});
+endsnippet
+
+snippet addEventListener(resize):js
+window.addEventListener('resize', (event) => {
+  ${1}
+});
+endsnippet
+
+snippet XMLHttpRequest(GET):js "XMLHttpRequest Template"
+let xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function () {
+  if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+    ${1:console.log(JSON.parse(xhr.responseText));}
+  }
+};
+xhr.open('${2:GET}','${3:./api/}',true);
+xhr.send(null);
+endsnippet
+
+snippet random_between:js "ランダム数 生成"
+// 5〜10の乱数を発生 [5]と[11-5]を指定する
+// ( Math.random() * ( ( max + 1 ) - min ) ) + min
+let rand = Math.floor( Math.random() * 6 ) + 5 ;
+${0}
+endsnippet
+
+snippet scrollTo:js "指定の位置へ移動(javascript)"
+window.scrollTo(0,0);
+${0}
+endsnippet
+
+snippet set_get_style:js "javascriptでのStyle指定"
+elem.style.cssText = 'color: blue';
+
+elem.setAttribute('style', 'color: blue');
+
+elem.style.color = 'blue';
+${0}
+endsnippet
+
+snippet getAttribute:js "属性の取得、変更(attr)"
+document.querySelector('${1}').getAttribute('${2}');
+document.querySelector('$1').setAttribute('$2', './image.jpg');
+${0}
+endsnippet
+
+# ---
+# RegularExpression
+# ---
+
+snippet regexp_match_$1:js "正規表現(RegExp.$1)"
+location.pathname.match(/recipe\/(.+)\.html/g);
+var _type = RegExp.\$1;
+${0}
+endsnippet
+
+# ---
+# jQuery
+# ---
+
+snippet document_ready:sn:jQuery "document ready event. (jQuery)" b
+$(function(){
+  ${0}
+});
+endsnippet
+
+snippet get_height:jQuery "Get width of element(jQuery)"
+$('${1}').width();        // 要素の幅のみ
+$('$1').innerWidth();     // 要素のpaddingを含んだ幅
+$('$1').outerWidth();     // 要素のborder、paddingを含んだ幅
+$('$1').outerWidth(true); // 要素のmargin、border、paddingを含んだ幅
+${0}
+endsnippet
+
+snippet get_width:jQuery "Get height of element(jQuery)"
+$('${1}').height();        // 要素の高さのみ
+$('$1').innerHeight();     // 要素のpaddingを含んだ高さ
+$('$1').outerHeight();     // 要素のborder、paddingを含んだ高さ
+$('$1').outerHeight(true); // 要素のmargin、border、paddingを含んだ高さ
+${0}
+endsnippet
+
+snippet get_scroll_position:jQuery "スクロール位置の取得(jQuery)"
+let scrollTop = $('${1}').scrollTop();
+${0}
+endsnippet
+
+snippet event_on_click:jQuery "jQueryイベント(on)"
+$('${1}').on('click',function() {
+  ${0}
+});
+endsnippet
+
+snippet event_on_click_dalegate:jQuery "jQueryイベント(delegate)"
+$('${1}').on('click', '${2}', function(e) {
+  e.preventDefault();
+  let target = this;
+  ${0}
+});
+endsnippet
+
+snippet scroll_to_target_animation:jQuery "指定の要素へスクロール(jQuery)"
+$('html,body').stop(true).animate({scrollTop: 0}, 500);
+$('html,body').stop(true).animate({scrollTop: $('${0}').offset().top},500);
+endsnippet
+
+snippet scroll_to_top_animation:click:jQuery "ページトップへアニメーション(jQuery)"
+$('${0}').on('click', function() {
+  $('html,body').stop(true).animate({scrollTop: 0}, 500);
+});
+endsnippet
+
+snippet scroll_to_target_animation:click:jQuery "指定の要素へスクロール(jQuery)"
+$('[data-scroll]').on('click',function(e){
+  let _target = $(e.currentTarget).attr('data-scroll');
+  if(!_target) _target = 'body';
+  $('html,body').stop(true).animate({scrollTop: $(_target).offset().top}, 600, 'easeOutQuint');
+});
+endsnippet
+
+snippet cookie:jQuery "jQuey cookie js Template"
+$.cookie( '${0}' , '${1:#:value}' , { expires: ${2:#:date} , path: '/', domain: 'google.com' , secure: false });
+$.removeCookie('${0}',{ path:'/' });
+endsnippet
+
+snippet ajax_done:jQuery "$.ajax(done)"
+$.ajax({
+  type: '${1:GET}',
+  url: '${2}',
+  dataType: '${3:jsonp}',
+  jsonpCallback: 'callback',
+  cache: false
+}).done(function(data){
+  ${4}
+}).fail(function(data){
+  ${5}
+}).always(function(data){
+  ${6}
+});
+endsnippet
+
+snippet ajax_then:jQuery "$.ajx(then)"
+$.ajax({
+  type: '${1:GET}',
+  url: '${2}',
+  dataType: '${3:jsonp}',
+  jsonpCallback: 'callback',
+  cache: false
+}).then(
+  function(data){
+    ${5}
+  },
+  function(data){
+    ${6}
+  }
+);
+endsnippet
+
+snippet deviceorientation:jQuery "ジャイロセンサー"
+$(window).on('deviceorientation',function(e){
+  const pointerPosX = e.gamma;
+  const pointerPosY = e.beta;
+});
+endsnippet
+
+# ---
+# Template
+# ---
+
+snippet designRecipe:js "design object"
+const APP = {
+  state: {
+    flg: {
+      rady: false,
+      load: false
+    },
+    size: {
+      width: window.innerWidth,
+      height: window.innerHeight
+    }
+  },
+
+  updateSizeData(){
+    this.state.size.width = window.innerWidth;
+    this.state.size.height = window.innerHeight;
+  },
+
+  resize(){
+    this.updateSizeData();
+  },
+  load(){
+    this.state.flg.load = true;
+  },
+  init(){
+    this.state.flg.ready = true;
+    this.resize();
+  }
+};
+endsnippet
+
+snippet setScrollAnimation:jQuery "scroll to target"
+function setScrollAnimation(){
+  $('[data-scroll]').on('click',function(e){
+    let _target = $(e.currentTarget).attr('data-scroll');
+    if(!_target) _target = 'body';
+    $('html,body').stop(true).animate({scrollTop: $(_target).offset().top}, 600, 'easeOutQuint');
+  });
+};
+endsnippet
+
+snippet setHashScrollAnimation:jQuery "scroll to hash target"
+function hashscroll(){
+  if(location.hash){
+    if($(location.hash).length){
+      const _position = $(location.hash).offset().top - $('.l-header').height();
+      $('body,html').animate({ scrollTop: _position }, 600, 'easeOutCubic');
+    }
+  }
+};
+endsnippet
+
+snippet setYoutubePlayer:js "YouTube iframe API"
+function setYoutubePlayer(id, time){
+  if(!id) return false;
+
+  let tag = document.createElement('script');
+
+  tag.src = 'https://www.youtube.com/iframe_api';
+  let firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  let player;
+  window.onYouTubeIframeAPIReady = function(){
+    player = new YT.Player('player', {
+      videoId: id,
+      playerVars: {
+        'autoplay': 1,
+        'controls': 0,
+        'playsinline': 1
+      },
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  };
+
+  function onPlayerReady(e) {
+    e.target.seekTo(time.startTime);
+    e.target.mute();
+    e.target.playVideo();
+  }
+
+  let done = false;
+  function onPlayerStateChange(e) {
+    // 初回の再生のみを判定
+    if (e.data == YT.PlayerState.PLAYING && !done) {
+      done = true;
+
+      // 現在の時間を監視して、ループを処理
+      setInterval(()=>{
+        if(player.getCurrentTime() > time.endTime){
+          player.seekTo(time.startTime);
+        }
+      }, 1000);
+    }
+  }
+}
+setYoutubePlayer('[video-id]', { startTime: 0, endTime: 10 });
+endsnippet
+
+snippet isIE:js b
+const isIE = document.documentMode;
+if (isIE) {
+  ${1}
+}
+endsnippet
+
+snippet setMouseStalker:js "マウスストーカー" b
+setMouseStalker(){
+  $('body').append('<div id="stalker"></div><div id="stalkerWrap"></div>');
+
+  const stalker = document.getElementById('stalker');
+  const stalkerWrap = document.getElementById('stalkerWrap');
+
+  //aタグにホバー中かどうかの判別フラグ
+  let hovFlag = false;
+
+  //マウスに追従させる処理 （リンクに吸い付いてる時は除外する）
+  document.addEventListener('mousemove', function (e) {
+    if (!hovFlag) {
+      stalker.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+      stalkerWrap.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+    }
+  });
+
+  //リンクへ吸い付く処理
+  const linkElem = document.querySelectorAll('a:not(.no_stick)');
+  for (let i = 0; i < linkElem.length; i++) {
+    //マウスホバー時
+    linkElem[i].addEventListener('mouseover', function (e) {
+      hovFlag = true;
+      //マウスストーカーにクラスをつける
+      stalker.classList.add('hov_');
+      stalkerWrap.classList.add('hov_');
+      //マウスストーカーの位置をリンクの中心に固定
+      let rect = e.target.getBoundingClientRect();
+      let posX = rect.left + (rect.width / 2);
+      let posY = rect.top + (rect.height / 2);
+      stalker.style.transform = 'translate(' + posX + 'px, ' + posY + 'px)';
+      stalkerWrap.style.transform = 'translate(' + posX + 'px, ' + posY + 'px)';
+    });
+    //マウスホバー解除時
+    linkElem[i].addEventListener('mouseout', function (e) {
+      hovFlag = false;
+      stalker.classList.remove('hov_');
+      stalkerWrap.classList.remove('hov_');
+    });
+  }
+};
+endsnippet
+
+snippet append:vanilla "append, prepend, insert" b
+parentElement.insertBefore(newElement, referenceElement);
+
+document.querySelector('div').appendChild(newElement);
+
+document.body.insertAdjacentHTML('beforebegin', '<div>beforebegin</div>');
+document.body.insertAdjacentHTML('afterbegin', '<div>afterbegin</div>');
+document.body.insertAdjacentHTML('beforeend', '<div>beforeend</div>');
+document.body.insertAdjacentHTML('afterend', '<div>afterend</div>');
+endsnippet
+
+snippet api:json:sony:info "sonymusic json information" i
+http://www.sonymusic.co.jp/json/artist/${1}/information/start/0/count/10
+endsnippet
+
+snippet api:json:sony:live "sonymusic json live" i
+http://www.sonymusic.co.jp/json/artist/${1}/live/start/0/count/10
+endsnippet
+
+snippet form:change:select:vanilla "form change select element" b
+const checkElement = document.querySelector('${1}');
+checkElement.addEventListener('change', (event) => {
+  const btn = document.querySelector('${2}');
+  if (checkElement.checked) {
+  } else {
+  }
+});
+endsnippet
+
+snippet settimeout:vanilla "setTimeout function" b
+setTimeout(function(){
+  ${0}
+}, ${1:1000});
+endsnippet
+
+snippet marquee:jQuery "marquee animation" b
+// マーキーの設定
+function setMarquee(){
+  $('${1}').each(function(index,item){
+    var _w = $(item).width();
+    var _w_in = $(item).find('span').width() + 6;
+    if(_w <= _w_in){
+      motionMarquee(index, _w, _w_in);
+    }
+  });
+}
+function motionMarquee(index, w, x){
+  $('$1').eq(index).find('span').delay(3000).animate({left: x * -1}, (x * 20),'linear',function(){
+    $('$1').eq(index).find('span').css({left: 0, opacity: 0});
+    $('$1').eq(index).find('span').animate({opacity:1},1000,function(){
+      motionMarquee(index, w, x);
+    });
+  });
+}
+endsnippet
+
+snippet const:function:arrow:vanilla "const function arrow" b
+const ${1} = ()=>{
+  ${0}
+};
+endsnippet
+
+snippet function:arrow:vanilla "arrow function" i
+()=>{
+  ${1}
+};
+endsnippet
+
+snippet cl:console.log:js "console.log();" i
+console.log(${1});${0}
+endsnippet
+
+snippet const:props:js "const props ...props" i
+const {
+  ${1},
+} = props;${0}
+endsnippet

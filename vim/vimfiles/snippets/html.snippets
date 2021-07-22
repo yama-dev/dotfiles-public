@@ -1,0 +1,134 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet	head_share_og "[template] head[prefix='og:*']"
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+endsnippet
+
+snippet	meta:share[template] "[template] meta[property='og:*']"
+<meta property="og:title" content="">
+<meta property="og:type" content="website"><!-- website, blog -->
+<meta property="og:url" content="">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="">
+<meta property="og:description" content="">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:determiner" content="タイトルの前に付く単語">
+<meta property="fb:app_id" content="App-ID(15文字の半角数字)">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="">
+<meta name="twitter:site" content="@[Twitter ID]">
+endsnippet
+
+snippet	thumbnail_inline:figure "[template]  Write background inline (figure)"
+<figure class="c-thumb" style="background: url(https://placehold.jp/250x150.png) top center no-repeat; background-size: cover;"></figure>
+endsnippet
+
+snippet	thumbnail_inline:div "[template] Write background inline (div)"
+<div class="c-thumb" style="background: url(https://placehold.jp/250x150.png) top center no-repeat; background-size: cover;"></div>
+endsnippet
+
+snippet	header_sample "[template] <header class='l-header'> ... </header>"
+<header class="l-header">
+  <h1 class="p-header__title"></h1>
+  <div class="p-header__gnav">
+    <span class="p-header__gnav-bar p-header__gnav-bar--01"></span>
+    <span class="p-header__gnav-bar p-header__gnav-bar--02"></span>
+    <span class="p-header__gnav-bar p-header__gnav-bar--03"></span>
+  </div>
+  <p class="p-header__read"></p>
+</header>
+endsnippet
+
+snippet	ul_li "[template] ul.p-list > li.p-list-item > a ${1}"
+<ul class="p-list>
+  <li class="p-list-item"><a href="${1}"></a></li>
+</ul>
+endsnippet
+
+snippet	ul_li:sns "[template] ul.p-snsList > li > a"
+<ul class="p-snsList">
+  <li class="p-snsList-item"><a href="http://twitter.com/share?url=[url]&text=[text]&hashtags=[hashtags]" target="_blank">Twitter</a></li>
+  <li class="p-snsList-item"><a href="http://www.facebook.com/sharer.php?u=[url]&t=[text]" target="_blank">Facebook</a></li>
+  <li class="p-snsList-item"><a href="http://line.me/R/msg/text/?[text]%20[url]" target="_blank">LINE</a></li>
+  <li class="p-snsList-item"><a href="http://b.hatena.ne.jp/entry/[url=http://なし]" target="_blank">このエントリーをはてなブックマークに追加</a></li>
+  <li class="p-snsList-item"><a href="http://b.hatena.ne.jp/add?url=[url]" target="_blank">このエントリーをはてなブックマークに追加</a></li>
+</ul>
+endsnippet
+
+snippet	style:inline "[template] <style> body { ... } </style>"
+<style>
+body {
+  width: 100%;
+  height: 100%;
+}
+</style>
+endsnippet
+
+snippet	embed:youtube "[template] YouTubeの埋め込みタグ"
+<!-- API https://developers.google.com/youtube/iframe_api_reference -->
+<iframe width="853" height="480" src="http://www.youtube.com/embed/0mm5t7riUt0?rel=0&controls=0&showinfo=0&theme=light&color=white" frameborder="0" allowfullscreen></iframe>
+endsnippet
+
+snippet	script:jQuery "[template] jQueryをCDNで読み込む"
+<script src="//code.jquery.com/jquery-3.1.0.min.js" charset="UTF-8"></script>
+<script>window.jQuery || document.write('<script src="./assets/js/vender/jquery-3.1.0.min.js"><\/script>')</script>
+endsnippet
+
+snippet	script:cdn "[template] CDNの読み込みとフォールバック"
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script>window.jQuery.easing.def || document.write('<script src="js/vendor/jquery.easing.1.3.js"><\/script>')</script>
+endsnippet
+
+snippet	template:div.disco_list "[template] div.disco_list"
+<div class="disco_list">
+  <div class="img_jk"><img src="" alt=""></div>
+  <div class="txt_cd_inner">
+    <div class="date_release"></div>
+    <div class="price"></div>
+    <div class="serial"></div>
+    <div class="txt_about"></div>
+    <ul class="track_list">
+      <li></li>
+    </ul>
+    <div class="buy_link">
+      <p class="ttl_link">BUY / DOWNLOAD</p>
+      <ul class="buy_list">
+        <li><a href="" target="_blank">iTunes</a></li>
+        <li><a href="" target="_blank">mora</a></li>
+        <li><a href="" target="_blank">Dwango</a></li>
+        <li><a href="" target="_blank">レコチョク</a></li>
+        <li><a href="" target="_blank">music.jp</a></li>
+        <li><a href="" target="_blank">オリコン</a></li>
+        <li><a href="" target="_blank">mumo</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+endsnippet
+

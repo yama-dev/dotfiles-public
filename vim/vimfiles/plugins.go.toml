@@ -1,0 +1,30 @@
+# go lang plugins
+
+# go command use as vim command :GoBuild, :GoInstall
+# execute `:GoInstallBinaries` at first.
+# https://github.com/hnakamur/vim-go-tutorial-ja
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+hook_add = '''
+  let g:go_def_mode='gopls'
+  let g:go_info_mode='gopls'
+
+  " autocmd FileType go nmap <leader>b  <Plug>(go-build)
+  " autocmd FileType go nmap <leader>r <Plug>(go-run)
+  " autocmd FileType go nmap <leader>t <Plug>(go-test)
+  " autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+
+  " 自動保存時にLinter有効化 Default->0
+  let g:go_metalinter_autosave = 1
+
+  " カーソル上のワードに対して:GoInfo実行
+  let g:go_auto_type_info = 1
+  " :GoInfo更新時間 Default->800
+  autocmd FileType go set updatetime=100
+  " または:GoInfoのキーバインドを設定
+  " autocmd FileType go nmap <Leader>i <Plug>(go-info)
+
+  " :GoPlayでページをブラウザに読み込まない Default->1
+  let g:go_play_open_browser = 0
+'''

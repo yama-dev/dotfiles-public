@@ -1,0 +1,104 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet php-tag "[PHP] <?php $1 ?>" i
+<?php ${1} ?>
+endsnippet
+
+snippet php-tag-br "[PHP] <?php $1 ?>" i
+<?php
+${1}
+?>
+endsnippet
+
+snippet echo-php-tag "[PHP] <?php echo $1; ?>" i
+<?php echo ${1}; ?>
+endsnippet
+
+snippet var-dump-php "[PHP] <?php var_dump($1); ?>"
+<?php var_dump(${1}); ?>
+endsnippet
+
+snippet if-inline-for-html "[PHP]"
+<?php if(${1}){ ?>
+<?php } ?>
+endsnippet
+
+snippet if-else-inline-for-html "[PHP]"
+<?php if(${1}){ ?>
+<?php } else { ?>
+<?php } ?>
+endsnippet
+
+snippet wp-category-list-all:li:archive:single "[WP] カテゴリリスト(ALL)を表示" b
+<?php
+function get_category_list(){
+  $terms = get_terms('${1}', array('hide_empty' => false));
+  $_html = '';
+  foreach ( $terms as $term ){
+    $_html .= ' <li>';
+    $_html .= '   <div>'.$term->name.'</div>';
+    $_html .= '   <a href="/category/'.$term->slug.'/"></a>';
+    $_html .= ' </li>';
+  }
+  return $_html;
+}
+?>
+endsnippet
+
+snippet wp-category-list-all:select:archive:single "[WP] カテゴリリスト(ALL)を表示" b
+<select onChange="location.href = value;">
+	<option value="/">ALL</option>
+<?php
+function get_category_list(){
+  $terms = get_terms('${1}', array('hide_empty' => false));
+  $_html = '';
+  foreach ( $terms as $term ){
+    $_html .= '  <option value="/category/'.$term->slug.'/">'.$term->name.'</option>';
+  }
+  return $_html;
+}
+?>
+</select>
+endsnippet
+
+snippet wp-if-frontpage "[WP] 分岐処理 is_front_page"
+<?php if(is_front_page()){ ?>
+<?php } else { ?>
+<?php } ?>
+endsnippet
+
+snippet wp-category-list-post:archive "[WP] カテゴリリストを表示"
+$category = get_the_terms($post->ID, 'category_news');
+$category_str = '';
+if($category){
+  $category_str .= '<li>';
+  foreach ($category as $val) {
+    $category_str .= '<span>'.$val->name.'</span>';
+  }
+  $category_str .= '</li>';
+}
+endsnippet

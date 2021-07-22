@@ -1,0 +1,333 @@
+# :call dein#recache_runtimepath()
+# :call dein#recache_runtimepath()
+
+# # Required:
+# [[plugins]]
+# repo = 'Shougo/dein.vim'
+
+# denite.
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+
+# Required:
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+on_if = '!has("nvim")'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+on_if = '!has("nvim")'
+
+# Diff view
+[[plugins]]
+repo = 'will133/vim-dirdiff'
+hook_add = '''
+let g:DirDiffAddArgs = "-f"
+let g:DirDiffExcludes = "node_modules,*.exe,.*.swp"
+let g:DirDiffIgnoreCase = 0
+let g:DirDiffWindowSize = 20
+'''
+
+# Indent view.
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+'''
+
+[[plugins]]
+repo = 'thinca/vim-qfreplace'
+
+[[plugins]]
+repo = 'vim-scripts/renamer.vim'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --bin'
+merged = '0'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
+hook_add = '''
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+nnoremap <silent> <Space>fg :Rg<CR>
+nnoremap <silent> <Space>ff :Files<CR>
+'''
+
+[[plugins]]
+repo = 'wakatime/vim-wakatime'
+
+[[plugins]]
+repo = 'voldikss/vim-floaterm'
+
+[[plugins]]
+repo = 'tpope/vim-markdown'
+hook_add = '''
+let g:markdown_fenced_languages = ['html', 'css', 'scss', 'javascript', 'python', 'bash=sh', 'php']
+let g:markdown_syntax_conceal = 0
+'''
+
+# Snippet.
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+# StatusLine.
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+" Smarter tab line.
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#default#layout = [
+  \   [ 'z', 'y', 'x' ],
+  \   [ 'c', 'b', 'a', 'error', 'warning']
+  \ ]
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+hook_add = '''
+let g:airline_theme='powerlineish'
+'''
+
+# Git.
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+set updatetime=500
+let g:gitgutter_max_signs = 500
+let g:gitgutter_map_keys = 0
+let g:gitgutter_highlight_lines = 0
+let g:gitgutter_override_sign_column_highlight = 0
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+" nnoremap <silent> <leader>gs :Git<CR>
+" nnoremap <silent> <leader>gd :Gdiffsplit<CR>
+" nnoremap <silent> <leader>gc :Git commit<CR>
+" nnoremap <silent> <leader>gb :Git blame<CR>
+" nnoremap <silent> <leader>gl :Git log<CR>
+" nnoremap <silent> <leader>gp :Git push<CR>
+" nnoremap <silent> <leader>gw :Gwrite<CR>
+" nnoremap <leader>gu :Git add -u<CR>
+'''
+
+[[plugins]]
+repo = 'cohama/agit.vim'
+# document https://github.com/cohama/agit.vim/blob/master/doc/agit.txt
+
+# Format.
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+hook_add = '''
+nnoremap ga <Plug>(EasyAlign)
+xnoremap ga <Plug>(EasyAlign)
+'''
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+hook_add = '''
+let g:vimproc#download_windows_dll = 1
+'''
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+let g:quickrun_config = get(g:, 'quickrun_config', {})
+let g:quickrun_config._ = {
+  \ 'runner'    : 'vimproc',
+  \ 'runner/vimproc/updatetime' : 60,
+  \ 'outputter' : 'error',
+  \ 'outputter/error/success' : 'buffer',
+  \ 'outputter/error/error'   : 'quickfix',
+  \ 'outputter/buffer/split'  : ':rightbelow 10sp',
+  \ 'outputter/buffer/close_on_empty' : 1,
+  \ }
+autocmd FileType qf nnoremap <silent><buffer>q :quit<CR>
+'''
+
+# Util.
+[[plugins]]
+repo = 'mg979/vim-visual-multi'
+rev = 'master'
+hook_add = '''
+let g:VM_default_mappings = 0
+let g:VM_maps = {}
+" let g:VM_maps['Find Under']         = '<C-d>' " replace C-n
+" let g:VM_maps['Find Subword Under'] = '<C-d>' " replace visual C-n
+let g:VM_maps["Add Cursor Down"] = '<M-j>' " new cursor down
+let g:VM_maps["Add Cursor Up"]   = '<M-k>' " new cursor up
+" let g:VM_maps["Select Cursor Down"] = '<M-C-Down>' " start selecting down
+" let g:VM_maps["Select Cursor Up"]   = '<M-C-Up>'   " start selecting up
+'''
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+hook_add = '''
+'''
+
+[[plugins]]
+repo = 'mhinz/vim-startify'
+hook_add = '''
+source ~/vimfiles/startify.vim
+'''
+
+[[plugins]]
+repo = 't9md/vim-quickhl'
+hook_add = '''
+  nnoremap <Space>m <Plug>(quickhl-manual-this)
+  xnoremap <Space>m <Plug>(quickhl-manual-this)
+  nnoremap <Space>M <Plug>(quickhl-manual-reset)
+  xnoremap <Space>M <Plug>(quickhl-manual-reset)
+'''
+
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+hook_add = '''
+ " mapping
+ nmap n <Plug>(anzu-n-with-echo)
+ nmap N <Plug>(anzu-N-with-echo)
+ nmap * <Plug>(anzu-star-with-echo)
+ nmap # <Plug>(anzu-sharp-with-echo)
+ " clear status
+ nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+ " statusline
+ set statusline=%{anzu#search_status()}
+'''
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+# preview.
+[[plugins]]
+repo = 'previm/previm'
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+hook_add = '''
+set helplang=ja
+'''
+
+[[plugins]]
+repo = 'vim-scripts/BufOnly.vim'
+
+# undotree
+[[plugins]]
+repo = 'mbbill/undotree'
+hook_add = '''
+  nnoremap U :UndotreeToggle<CR>
+'''
+
+# JSDoc
+[[plugins]]
+repo = 'heavenshell/vim-jsdoc'
+hook_add = '''
+  let g:jsdoc_allow_input_prompt=1
+  let g:jsdoc_input_description=1
+  let g:jsdoc_enable_es6=1
+  nnoremap <Space>j :JsDoc<CR>
+'''
+
+[[plugins]]
+repo = 'itchyny/calendar.vim'
+hook_add = '''
+'''
+
+# language server.
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+merged = '0'
+rev = 'release'
+hook_add = '''
+let g:coc_global_extensions = [
+  \ 'coc-cmake',
+  \ 'coc-css',
+  \ 'coc-dictionary',
+  \ 'coc-emmet',
+  \ 'coc-emoji',
+  \ 'coc-eslint',
+  \ 'coc-explorer',
+  \ 'coc-floaterm',
+  \ 'coc-fzf-preview',
+  \ 'coc-git',
+  \ 'coc-go',
+  \ 'coc-highlight',
+  \ 'coc-html',
+  \ 'coc-htmlhint',
+  \ 'coc-html-css-support',
+  \ 'coc-json',
+  \ 'coc-lists',
+  \ 'coc-markdownlint',
+  \ 'coc-omni',
+  \ 'coc-phpls',
+  \ 'coc-powershell',
+  \ 'coc-prettier',
+  \ 'coc-restclient',
+  \ 'coc-rls',
+  \ 'coc-sh',
+  \ 'coc-snippets',
+  \ 'coc-sql',
+  \ 'coc-stylelint',
+  \ 'coc-syntax',
+  \ 'coc-tabnine',
+  \ 'coc-tsserver',
+  \ 'coc-vetur',
+  \ 'coc-vimlsp',
+  \ 'coc-xml',
+  \ 'coc-yaml',
+  \ ]
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+source ~/vimfiles/coc.vim
+source ~/vimfiles/coc-explorer.vim
+'''
+
+# colorscheme.
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+hook_add = '''
+"  au MyAutoCmd VimEnter * nested colorscheme tender
+'''
+
+[[plugins]]
+repo = 'vim-scripts/xoria256.vim'
+hook_add = '''
+"  au MyAutoCmd VimEnter * nested colorscheme xoria256
+'''
+
+[[plugins]]
+repo = 'zaki/zazen'
+hook_add = '''
+"  au MyAutoCmd VimEnter * nested colorscheme zazen
+'''
+
+[[plugins]]
+repo = 'danishprakash/vim-yami'
+hook_add = '''
+"  au MyAutoCmd VimEnter * nested colorscheme yami
+'''
+
+[[plugins]]
+repo = 'Haron-Prime/Antares'
+hook_add = '''
+au MyAutoCmd VimEnter * nested colorscheme Antares
+'''
+
