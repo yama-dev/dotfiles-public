@@ -9,6 +9,8 @@ brew install lazygit
 brew install tig
 brew install jq
 brew install yq
+brew install tree
+brew install cmake
 
 # fzf
 brew install fzf
