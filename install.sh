@@ -18,7 +18,11 @@ $(brew --prefix)/opt/fzf/install # useful key bindings and fuzzy completion
 
 brew install go
 brew install nodebrew
+brew install yarm
 
+brew install gh
+brew install qt
+brew install sshpass
 brew install wget
 brew install ffmpeg
 brew install git-ftp
