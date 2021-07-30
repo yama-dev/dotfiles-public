@@ -2,6 +2,25 @@
 # Mac Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+brew install ripgrep
+brew install bat
+brew install fd
+brew install lazygit
+brew install tig
+brew install jq
+brew install yq
+
+# fzf
+brew install fzf
+$(brew --prefix)/opt/fzf/install # useful key bindings and fuzzy completion
+
+brew install go
+brew install nodebrew
+
+brew install wget
+brew install ffmpeg
+brew install git-ftp
+
 brew install --cask appcleaner
 brew install --cask clipy
 brew install --cask google-japanese-ime
