@@ -20,6 +20,7 @@ brew install go
 brew install nodebrew
 brew install yarm
 
+brew install tmux
 brew install gh
 brew install qt
 brew install sshpass
