@@ -169,3 +169,8 @@ alias lla='ll -d $(find `pwd`)'
 alias findd='find . -type d'
 alias findf='find . -type f'
 
+# cd
+alias home='cd ~/'
+alias yama='cd ~/yama-dev/'
+alias yamadev='cd ~/yama-dev/'
+
