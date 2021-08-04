@@ -164,5 +164,8 @@ alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 # devl [alias]
 alias devl='git fetch &&git status -bs && chrome && mvim ./ && npm run dev'
 
+# find
 alias lla='ll -d $(find `pwd`)'
+alias findd='find . -type d'
+alias findf='find . -type f'
 
