@@ -30,3 +30,17 @@ bind status <Ctrl-r> ?git reset --hard HEAD
 bind branch B ?git checkout -b "%(prompt Enter new branch name:)" %(branch)
 bind main   B ?git checkout -b "%(prompt Enter new branch name: )"
 
+bind generic g      move-first-line
+bind generic G      move-last-line
+bind main    G      move-last-line
+
+bind generic F      ?git fetch %(remote)
+bind main    F      ?git fetch %(remote)
+
+bind generic p ?git pull %(remote)
+
+bind generic P ?git push -u %(remote) %(repo:head)
+
+bind generic C !git commit
+bind main    C !git commit
+
