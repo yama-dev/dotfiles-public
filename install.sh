@@ -11,6 +11,7 @@ brew install jq
 brew install yq
 brew install tree
 brew install cmake
+brew install htmlq
 
 # fzf
 brew install fzf
