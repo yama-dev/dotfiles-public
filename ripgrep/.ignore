@@ -21,3 +21,9 @@ package-lock.json
 wp-includes/
 wp-admin/
 
+vender/
+vendor/
+libs/
+
+.git/
+
