@@ -5,7 +5,7 @@ fi
 
 # Editors
 export EDITOR='vim'
-export VISUAL='mvim'
+export VISUAL='code'
 export PAGER='less'
 
 # Language
@@ -141,14 +141,15 @@ alias grepc='grep --count --color=auto -r --exclude-dir={node_modules,.git} --li
 # vim [alias]
 alias vimn='vim -u NONE -N'
 alias mvimn='mvim -u NONE'
+alias nimn='nvim -u NONE -N'
 
 # dotfiles [alias]
 alias dotfiles='mvim ~/'
 
 # fzf [alias]
 alias fzfp='fzf --preview "bat --color=always --style=header,grid --line-range :100 {}"'
-alias fzfv='mvim `fzfp`'
-alias fzfd='mvim $(dirname `fzfp`)'
+alias fzfv='nvim `fzfp`'
+alias fzfd='nvim $(dirname `fzfp`)'
 alias fzfcd='cd $(dirname `fzfp`)'
 
 alias server='browser-sync start --server --files "**/*.html,**/*.js,**/*.css"'
@@ -162,8 +163,9 @@ alias psg='ps -e | grep'
 # Chrome [alias]
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
-# devl [alias]
-alias devl='git fetch &&git status -bs && chrome && mvim ./ && npm run dev'
+# devel [alias]
+alias devl='git fetch &&git status -bs && nvim ./ && npm run dev'
+alias devel='git fetch &&git status -bs && chrome && nvim ./ && npm run dev'
 
 # find
 alias lla='ll -d $(find `pwd`)'
