@@ -120,6 +120,9 @@ alias gl='git log --graph --color --all --oneline'
 # lazygit
 alias lg='lazygit'
 
+# tig
+alias tig='tig --all'
+
 # ctags [alias]
 alias ctags="`brew --prefix`/bin/ctags"
 
@@ -174,6 +177,16 @@ alias findf='find . -type f'
 
 # cd
 alias home='cd ~/'
+alias desktop='cd ~/Desktop/'
+alias work='cd ~/yama-dev/work/'
 alias yama='cd ~/yama-dev/'
 alias yamadev='cd ~/yama-dev/'
+
+# docker
+alias dup='docker-compose up -d'
+alias ddown='docker-compose down'
+alias dps='docker-compose ps -a'
+
+# Chrome [alias]
+alias ftp="/Applications/FileZilla.app/Contents/MacOS/filezilla"
 
