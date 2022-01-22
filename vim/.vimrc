@@ -176,9 +176,9 @@ set undofile
 set undodir=~/.vim/backup/,~/temp/backup/
 
 """ Set cd.
-if has('autochdir')
-  set autochdir
-endif
+" if has('autochdir')
+"   set autochdir
+" endif
 
 """ Move cursor to move.
 set whichwrap=b,s,h,l,<,>,[,]
@@ -338,9 +338,9 @@ vnoremap <Leader>al :s/$/\r/gc<CR>
 """ 一致しない行を消す
 " :%v/^.*Port.*$/d
 
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap [<Enter> []<Left><CR><ESC><S-o>
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
+" inoremap {<Enter> {}<Left><CR><ESC><S-o>
+" inoremap [<Enter> []<Left><CR><ESC><S-o>
+" inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
 """ adjust indent.
 vnoremap < <gv
@@ -352,6 +352,8 @@ inoremap jj <Esc>
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
 nnoremap <F12> :edit $MYVIMRC<CR>
+
+" :g/pattern/z#.5|echo"=========="
 
 "--------------------------------------------------
 " grep
