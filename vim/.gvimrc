@@ -33,7 +33,7 @@ elseif has('mac')
   set antialias
 
   " Set Transparency.
-  set transparency=8
+  set transparency=10
 
   inoremap <ESC> <ESC>:set iminsert=0<CR>
 endif
