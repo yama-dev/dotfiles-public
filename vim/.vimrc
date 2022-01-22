@@ -413,3 +413,5 @@ let g:html_indent_autotags = "html,body"
 "
 "--------------------------------------------------
 
+autocmd VimEnter * AirlineTheme tender
+
