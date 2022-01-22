@@ -1,5 +1,4 @@
-" vimrc
-" author: @yama-dev
+" vimrc " author: @yama-dev
 
 "--------------------------------------------------
 " reset augroup init
@@ -10,7 +9,13 @@ augroup END
 
 let g:mapleader = "\<Space>"
 
+"--------------------------------------------------
+" import
+"--------------------------------------------------
 source $HOME/vimfiles/functions.vim
+source $HOME/vimfiles/js_file_open.vim
+source $HOME/vimfiles/file_type_setting.vim
+" source $HOME/vimfiles/vimrc-auto-cursorline.vim
 
 "--------------------------------------------------
 " Setting Env. >>>
@@ -404,9 +409,6 @@ let g:html_indent_inctags = ""
 let g:html_indent_autotags = "html,body"
 
 "--------------------------------------------------
-" import
+"
 "--------------------------------------------------
-source $HOME/vimfiles/js_file_open.vim
-source $HOME/vimfiles/vimrc-auto-cursorline.vim
-source $HOME/vimfiles/file_type_setting.vim
 
