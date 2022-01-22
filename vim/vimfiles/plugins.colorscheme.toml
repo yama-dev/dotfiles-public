@@ -1,0 +1,31 @@
+# colorscheme.
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+hook_add = '''
+"  au MyAutoCmd VimEnter * nested colorscheme tender
+'''
+
+[[plugins]]
+repo = 'vim-scripts/xoria256.vim'
+hook_add = '''
+"  au MyAutoCmd VimEnter * nested colorscheme xoria256
+'''
+
+[[plugins]]
+repo = 'zaki/zazen'
+hook_add = '''
+"  au MyAutoCmd VimEnter * nested colorscheme zazen
+'''
+
+[[plugins]]
+repo = 'danishprakash/vim-yami'
+hook_add = '''
+"  au MyAutoCmd VimEnter * nested colorscheme yami
+'''
+
+[[plugins]]
+repo = 'Haron-Prime/Antares'
+hook_add = '''
+au MyAutoCmd VimEnter * nested colorscheme Antares
+'''
+

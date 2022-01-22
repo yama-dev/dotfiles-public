@@ -40,7 +40,6 @@ endif
 
 if &compatible
   set nocompatible
-  filetype off 
 endif
 
 "--------------------------------------------------
@@ -70,9 +69,11 @@ if dein#load_state(s:dein_dir)
 
   " plugin toml file.
   let s:toml = s:home_dir . '/vimfiles/plugins.toml'
+  let s:colorscheme_toml = s:home_dir . '/vimfiles/plugins.colorscheme.toml'
   let s:lazy_toml = s:home_dir . '/vimfiles/plugins_lazy.toml'
 
   call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:colorscheme_toml, {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
   call dein#end()
