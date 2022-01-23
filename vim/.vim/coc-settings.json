@@ -1,6 +1,6 @@
 {
-  "suggest.languageSourcePriority": 30,
-  "suggest.maxPreviewWidth": 160,
+  "suggest.languageSourcePriority": 10,
+  "suggest.triggerCompletionWait": 50,
   "suggest.snippetIndicator": " -->> ",
   "suggest.enablePreview": true,
   "suggest.removeDuplicateItems": false,
@@ -32,8 +32,6 @@
     "typeParameter": "\uf728",
     "default": "\uf29c"
   },
-
-  "diagnostic.maxWindowHeight": 12,
 
   "phpls.enable": true,
   "phpls.path": "~/.nodebrew/current/bin/intelephense",
@@ -231,6 +229,8 @@
   "scss.lint.universalSelector": "warning",
   "scss.lint.duplicateProperties": "warning",
 
+  "tsserver.enable": true,
+
   "eslint.packageManager": "npm",
   "eslint.autoFixOnSave": false,
 
@@ -271,11 +271,16 @@
     "no-emphasis-as-heading": false,
     "no-inline-html": false
   },
-  "snippets.priority": 200,
+  "snippets.priority": 100,
   "snippets.userSnippetsDirectory": "~/vimfiles/snippets",
-  "snippets.extends": {
-  },
+  "snippets.ultisnips.enable": true,
+  "snippets.ultisnips.usePythonx": true,
+  "snippets.ultisnips.directories":[
+    "UltiSnips"
+  ],
+  "snippets.snipmate.enable": false,
   "snippets.shortcut": "SNIP",
+  "snippets.triggerCharacters": [],
 
   "highlight.colorNames.enable": false,
   "highlight.document.enable": false,
@@ -286,6 +291,15 @@
   },
   "emmet.priority": 1,
 
+  "explorer.root.customRules": {
+    "vcs": {
+      "patterns": [".git", ".gitignore", "package.json", "Makefile", "README.md", ".config.json"]
+    },
+    "vcs-r": {
+      "patterns": [".git", ".gitignore", "package.json", "Makefile", "README.md", ".config.json"],
+      "bottomUp": true
+    }
+  },
   "explorer.icon.enableNerdfont": true,
   "explorer.file.showHiddenFiles": true
 }
