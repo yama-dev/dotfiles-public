@@ -37,7 +37,7 @@ xmap <leader>x  <Plug>(coc-convert-snippet)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
@@ -104,13 +104,13 @@ nnoremap <silent><nowait> <leader>cc :<C-u>CocList commands<CR>
 " Find symbol of current document.
 nnoremap <silent><nowait> <leader>co :<C-u>CocList outline<CR>
 " Search workspace symbols.
-" nnoremap <silent><nowait> <leader>cs :<C-u>CocList -I symbols<CR>
+nnoremap <silent><nowait> <leader>cs :<C-u>CocList -I symbols<CR>
 " Show all diagnostics.
 nnoremap <silent><nowait> <leader>d :<C-u>CocList diagnostics<CR>
 " Manage extensions.
-" nnoremap <silent><nowait> <leader>e :<C-u>CocList extensions<CR>
+nnoremap <silent><nowait> <leader>ce :<C-u>CocList extensions<CR>
 " coc-yank show yank-list.
-nnoremap <silent><nowait> <leader>y :<C-u>CocList -A --normal yank<CR>
+nnoremap <silent><nowait> <leader>cy :<C-u>CocList -A --normal yank<CR>
 
 " Multi Cursor
 hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
