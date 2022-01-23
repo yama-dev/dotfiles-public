@@ -14,11 +14,11 @@ function! s:exec_cur_dir(cmd)
 endfunction
 
 function! s:init_explorer()
-  " set winblend=10
+  set winblend=10
 
   " CocList
-  nnoremap <buffer> <leader>fg :call <SID>exec_cur_dir('CocList -I grep')<CR>
-  nnoremap <buffer> <leader>fG :call <SID>exec_cur_dir('CocList -I grep -regex')<CR>
+  nnoremap <buffer> <leader>ff :call <SID>exec_cur_dir('CocList -I grep')<CR>
+  nnoremap <buffer> <leader>fg :call <SID>exec_cur_dir('CocList -I grep -regex')<CR>
   nnoremap <buffer> <C-p> :call <SID>exec_cur_dir('CocList files')<CR>
 endfunction
 
