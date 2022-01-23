@@ -512,14 +512,6 @@ document.body.insertAdjacentHTML('beforeend', '<div>beforeend</div>');
 document.body.insertAdjacentHTML('afterend', '<div>afterend</div>');
 endsnippet
 
-snippet api:json:sony:info "sonymusic json information" i
-http://www.sonymusic.co.jp/json/artist/${1}/information/start/0/count/10
-endsnippet
-
-snippet api:json:sony:live "sonymusic json live" i
-http://www.sonymusic.co.jp/json/artist/${1}/live/start/0/count/10
-endsnippet
-
 snippet form:change:select:vanilla "form change select element" b
 const checkElement = document.querySelector('${1}');
 checkElement.addEventListener('change', (event) => {
@@ -667,3 +659,23 @@ function isMobile() {
   return false;
 }
 endsnippet
+
+snippet detectMobile:matchMedia:event:js "detectMobile" b 
+var mql = window.matchMedia('screen and (max-width: 780px)');
+
+function checkBreakPoint(mql) {
+  if (mql.matches) {
+  } else {
+  }
+}
+
+mql.addListener(checkBreakPoint);
+
+checkBreakPoint(mql);
+endsnippet
+
+snippet sessionStorage:js "sessionStorage set&get" i 
+sessionStorage.setItem('op', 'true');
+const OP_SKIP = sessionStorage.getItem('op');
+endsnippet
+
