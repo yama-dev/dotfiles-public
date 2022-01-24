@@ -118,8 +118,11 @@ set autoindent
 set smartindent
 
 """ Window size at startup.
-set columns=170
-set lines=55
+if has('nvim')
+else
+  set columns=190
+  set lines=55
+endif
 
 """ Line Number.
 set number
@@ -209,13 +212,15 @@ set synmaxcol=300
 " set cursorline
 " set cursorcolumn
 
-" set list
-set listchars=tab:>-,extends:<,trail:-,eol:<
-" set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%,space:␣
+highlight ExtraWhitespace ctermfg=darkgreen guifg=darkgreen
+match ExtraWhitespace / \+$/
 
 """ Set Viminfo.
-set viminfo='20,f1,<500,s100,h,%
-set viminfo+=n~/.vim/viminfo
+if !has('nvim')
+  set viminfo='20,f1,<500,s100,h,%,n$HOME/.vim/viminfo
+endif
 
 " set spell
 " set spelllang=en,cjk
@@ -252,6 +257,8 @@ set ttyfast
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 80
 
+set redrawtime=3000
+
 "--------------------------------------------------
 " Settings key-bind.
 "--------------------------------------------------
@@ -263,13 +270,13 @@ map ; :
 nmap <ESC><ESC> ;nohlsearch<CR><ESC>
 
 """ change tabsize.
-map <F9> <C-w>10<
-map <F10> <C-w>10>
-map <S-F9> <C-w>10-
-map <S-F10> <C-w>10+
+nnoremap <F9> <C-w>10<
+nnoremap <F10> <C-w>10>
+nnoremap <S-F9> <C-w>10-
+nnoremap <S-F10> <C-w>10+
 
 """ change tabsize.
-map <F11> :ToggleFullScreen<CR>
+nmap <F11> :ToggleFullScreen<CR>
 
 """ Settings For Search and Replace.
 nnoremap / /\v
@@ -317,26 +324,31 @@ inoremap <C-h> <ESC>10ha
 inoremap <C-l> <ESC>10la
 
 """ Not register overwrite.
-xnoremap s "_s
+nnoremap ss "_s
+xnoremap ss "_s
 nnoremap dd "_dd
 
 """ Add Line.
-nnoremap <Leader>al :%s/$/\r/gc<CR>
-vnoremap <Leader>al :s/$/\r/gc<CR>
+nnoremap <Leader>gla :%s/$/\r/gc<CR>
+vnoremap <Leader>gla :s/$/\r/gc<CR>
 
 """ Delete Line.
-" nnoremap <Leader>dl  :%s/^$\n//gc<CR>
-" vnoremap <Leader>dl  :s/^$\n//gc<CR>
+nnoremap <Leader>gld  :%s/^$\n//gc<CR>
+vnoremap <Leader>gld  :s/^$\n//gc<CR>
 
 """ Delete Space.
-" nnoremap <Leader>ds  :%s/\s\+//gc<CR>
-" vnoremap <Leader>ds  :s/\s\+//gc<CR>
+nnoremap <Leader>gds  :%s/\s\+//gc<CR>
+vnoremap <Leader>gds  :s/\s\+//gc<CR>
 
 """ 一致した行を消す
 " :%g/^.*Port.*$/d
+" :g/pattern/d 
 
 """ 一致しない行を消す
+" :g!/pattern/d 
 " :%v/^.*Port.*$/d
+" :v/pattern/d
+" :v/\(1.9.0|1.8.0\)/d
 
 " inoremap {<Enter> {}<Left><CR><ESC><S-o>
 " inoremap [<Enter> []<Left><CR><ESC><S-o>
@@ -367,8 +379,8 @@ if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
-" command! -nargs=* -complete=file Rg :tabnew | :silent grep --sort-files <args>
-" command! -nargs=* -complete=file Rgg :tabnew | :silent grep <args>
+command! -nargs=* -complete=file Rgg :tabnew | :silent grep --sort-files <args>
+command! -nargs=* -complete=file Rggg :tabnew | :silent grep <args>
 
 "--------------------------------------------------
 " terminal
