@@ -8,6 +8,24 @@
 # denite.
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+hook_add = '''
+" Define mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
+'''
 
 # Required:
 [[plugins]]
@@ -23,7 +41,7 @@ on_if = '!has("nvim")'
 repo = 'will133/vim-dirdiff'
 hook_add = '''
 let g:DirDiffAddArgs = "-f"
-let g:DirDiffExcludes = "node_modules,*.exe,.*.swp"
+let g:DirDiffExcludes = "node_modules,*.exe,.*.swp,.*.psd,.*.ai"
 let g:DirDiffIgnoreCase = 0
 let g:DirDiffWindowSize = 20
 '''
@@ -33,10 +51,14 @@ let g:DirDiffWindowSize = 20
 repo = 'nathanaelkane/vim-indent-guides'
 hook_add = '''
 let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+let g:indent_guides_exclude_filetypes = ['help','calendar','startify']
 
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
+
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black ctermbg=237
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=243
 '''
 
 [[plugins]]
@@ -44,6 +66,19 @@ repo = 'thinca/vim-qfreplace'
 
 [[plugins]]
 repo = 'vim-scripts/renamer.vim'
+
+[[plugins]]
+repo = 'mattn/vim-findroot'
+hook_add = '''
+let g:findroot_patterns = [
+  \  '.git/',
+  \  '.gitignore',
+  \  'Makefile',
+  \  '.config.json',
+  \  'README.md',
+  \]
+let g:findroot_not_for_subdir = 0
+'''
 
 [[plugins]]
 repo = 'junegunn/fzf'
@@ -57,17 +92,31 @@ hook_add = '''
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+
+" without filename
+command! -bang -nargs=* RG
+  \ call fzf#vim#grep(
+  \   "rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
-nnoremap <silent> <Space>fg :Rg<CR>
-nnoremap <silent> <Space>ff :Files<CR>
+nnoremap <silent> <leader>ff :Files<CR>
+nnoremap <silent> <leader>fg :Rg<CR>
+nnoremap <silent> <leader>fG :RG<CR>
 '''
 
 [[plugins]]
-repo = 'wakatime/vim-wakatime'
+repo = 'voldikss/vim-floaterm'
 
 [[plugins]]
-repo = 'voldikss/vim-floaterm'
+repo = 'mattn/webapi-vim'
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html','vue','scss','css','sass']
+hook_add = '''
+let g:user_emmet_leader_key='<C-e>'
+'''
 
 [[plugins]]
 repo = 'tpope/vim-markdown'
@@ -84,58 +133,108 @@ repo = 'honza/vim-snippets'
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
-" Smarter tab line.
+let g:airline#extensions#default#layout = [
+  \   ['a','b','y','x'],
+  \   ['c','z','error','warning']
+  \ ]
+
+" tab line.
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#default#layout = [
-  \   [ 'z', 'y', 'x' ],
-  \   [ 'c', 'b', 'a', 'error', 'warning']
-  \ ]
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#tabs_label = 'Tabs'
+let g:airline_section_c = airline#section#create(['file'])
+let g:airline#extensions#tabline#buffer_idx_format = {
+  \ '0': '[0]',
+  \ '1': '[1]',
+  \ '2': '[2]',
+  \ '3': '[3]',
+  \ '4': '[4]',
+  \ '5': '[5]',
+  \ '6': '[6]',
+  \ '7': '[7]',
+  \ '8': '[8]',
+  \ '9': '[9]'
+  \}
+
+" fonts
+if has('macunix')
+  let g:airline_powerline_fonts = 1
+endif
+
+" unicode symbols
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+
+" mode
+let g:airline_mode_map = {
+  \ '__'     : '-',
+  \ 'c'      : 'Command',
+  \ 'i'      : 'Insert',
+  \ 'ic'     : 'I',
+  \ 'ix'     : 'I',
+  \ 'n'      : 'Normal',
+  \ 'multi'  : 'Multi',
+  \ 'ni'     : 'N',
+  \ 'no'     : 'N',
+  \ 'R'      : 'Replace',
+  \ 'Rv'     : 'R',
+  \ 's'      : 'S',
+  \ 'S'      : 'S',
+  \ ''     : 'S',
+  \ 't'      : 'T',
+  \ 'v'      : 'Visual',
+  \ 'V'      : 'V-Line',
+  \ ''     : 'V-Block'
+  \ }
 '''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
-hook_add = '''
-let g:airline_theme='powerlineish'
-'''
 
 # Git.
+# -> shows git diff markers in the sign column
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
-set updatetime=500
 let g:gitgutter_max_signs = 500
 let g:gitgutter_map_keys = 0
 let g:gitgutter_highlight_lines = 0
 let g:gitgutter_override_sign_column_highlight = 0
+
+nnoremap <leader>ggt :GitGutterLineHighlightsToggle<CR> " GitGutter Highlight Toggle.
+nnoremap <leader>ggu :GitGutterUndoHunk<CR> " Reset Hunk under cursor.
+nmap [c <Plug>(GitGutterPrevHunk)
+nmap ]c <Plug>(GitGutterNextHunk)
 '''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = '''
-" nnoremap <silent> <leader>gs :Git<CR>
-" nnoremap <silent> <leader>gd :Gdiffsplit<CR>
-" nnoremap <silent> <leader>gc :Git commit<CR>
-" nnoremap <silent> <leader>gb :Git blame<CR>
-" nnoremap <silent> <leader>gl :Git log<CR>
-" nnoremap <silent> <leader>gp :Git push<CR>
-" nnoremap <silent> <leader>gw :Gwrite<CR>
-" nnoremap <leader>gu :Git add -u<CR>
+nnoremap <leader>ggg :Git<CR>
+nnoremap <leader>ggf :Git fetch --all --prune<CR>
+nnoremap <leader>ggs :Git status<CR>
+nnoremap <leader>gga :Git add -u<CR>
+nnoremap <leader>ggc :Git commit<CR>
+nnoremap <leader>ggl :Git log<CR>
+nnoremap <leader>ggb :Git branch<CR>
+nnoremap <leader>ggd :Git diff<CR>
+nnoremap <leader>ggp :Git pull<CR>
+nnoremap <leader>ggP :Git push<CR>
 '''
 
 [[plugins]]
 repo = 'cohama/agit.vim'
-# document https://github.com/cohama/agit.vim/blob/master/doc/agit.txt
 
 # Format.
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
 hook_add = '''
-nnoremap ga <Plug>(EasyAlign)
-xnoremap ga <Plug>(EasyAlign)
+vmap <leader>al <Plug>(EasyAlign)
 '''
 
 [[plugins]]
@@ -170,8 +269,8 @@ let g:VM_default_mappings = 0
 let g:VM_maps = {}
 " let g:VM_maps['Find Under']         = '<C-d>' " replace C-n
 " let g:VM_maps['Find Subword Under'] = '<C-d>' " replace visual C-n
-let g:VM_maps["Add Cursor Down"] = '<M-j>' " new cursor down
-let g:VM_maps["Add Cursor Up"]   = '<M-k>' " new cursor up
+" let g:VM_maps["Add Cursor Down"] = '<M-j>' " new cursor down
+" let g:VM_maps["Add Cursor Up"]   = '<M-k>' " new cursor up
 " let g:VM_maps["Select Cursor Down"] = '<M-C-Down>' " start selecting down
 " let g:VM_maps["Select Cursor Up"]   = '<M-C-Up>'   " start selecting up
 '''
@@ -185,40 +284,53 @@ hook_add = '''
 repo = 'mhinz/vim-startify'
 hook_add = '''
 source ~/vimfiles/startify.vim
+nnoremap <leader>s :Startify<CR>
 '''
 
 [[plugins]]
 repo = 't9md/vim-quickhl'
 hook_add = '''
-  nnoremap <Space>m <Plug>(quickhl-manual-this)
-  xnoremap <Space>m <Plug>(quickhl-manual-this)
-  nnoremap <Space>M <Plug>(quickhl-manual-reset)
-  xnoremap <Space>M <Plug>(quickhl-manual-reset)
+nmap <leader>m <Plug>(quickhl-manual-this)
+xmap <leader>m <Plug>(quickhl-manual-this)
+nmap <leader>M <Plug>(quickhl-manual-reset)
+xmap <leader>M <Plug>(quickhl-manual-reset)
 '''
 
 [[plugins]]
 repo = 'osyo-manga/vim-anzu'
 hook_add = '''
- " mapping
- nmap n <Plug>(anzu-n-with-echo)
- nmap N <Plug>(anzu-N-with-echo)
- nmap * <Plug>(anzu-star-with-echo)
- nmap # <Plug>(anzu-sharp-with-echo)
- " clear status
- nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
- " statusline
- set statusline=%{anzu#search_status()}
+" mapping
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+" clear status
+nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+" statusline
+set statusline=%{anzu#search_status()}
 '''
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
+hook_add = '''
+let g:AutoPairsShortcutToggle = '<C-p>'
+'''
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 
 # preview.
 [[plugins]]
-repo = 'previm/previm'
+repo = 'iamcco/markdown-preview.nvim'
+build = '''
+sh -c "cd app && yarn install"
+'''
+hook_add = '''
+let g:mkdp_markdown_css = expand('~/markdown.css')
+let g:mkdp_highlight_css = expand('~/highlight.css')
+let g:mkdp_page_title = '「${name}」'
+let g:mkdp_filetypes = ['markdown']
+'''
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
@@ -239,16 +351,19 @@ hook_add = '''
 # JSDoc
 [[plugins]]
 repo = 'heavenshell/vim-jsdoc'
+build = 'make install'
 hook_add = '''
   let g:jsdoc_allow_input_prompt=1
   let g:jsdoc_input_description=1
   let g:jsdoc_enable_es6=1
-  nnoremap <Space>j :JsDoc<CR>
+  nnoremap <leader>j :JsDoc<CR>
 '''
 
 [[plugins]]
 repo = 'itchyny/calendar.vim'
 hook_add = '''
+nmap <C-c> :Calendar -view=year -split=horizontal -position=below -height=12<CR>
+nmap <C-C> :Calendar<CR>
 '''
 
 # language server.
@@ -300,34 +415,36 @@ source ~/vimfiles/coc.vim
 source ~/vimfiles/coc-explorer.vim
 '''
 
-# colorscheme.
 [[plugins]]
-repo = 'jacoborus/tender.vim'
+repo = 'machakann/vim-sandwich' # https://github.com/machakann/vim-sandwich
 hook_add = '''
-"  au MyAutoCmd VimEnter * nested colorscheme tender
+xmap as <Plug>(textobj-sandwich-query-a)
+omap is <Plug>(textobj-sandwich-query-i)
+omap as <Plug>(textobj-sandwich-query-a)
+
+xmap iss <Plug>(textobj-sandwich-auto-i)
+xmap ass <Plug>(textobj-sandwich-auto-a)
+omap iss <Plug>(textobj-sandwich-auto-i)
+omap ass <Plug>(textobj-sandwich-auto-a)
 '''
+# saiw
+# sdb
+# sr srb
 
 [[plugins]]
-repo = 'vim-scripts/xoria256.vim'
+repo = 'easymotion/vim-easymotion' # https://github.com/easymotion/vim-easymotion
 hook_add = '''
-"  au MyAutoCmd VimEnter * nested colorscheme xoria256
-'''
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+let g:EasyMotion_smartcase = 1
 
-[[plugins]]
-repo = 'zaki/zazen'
-hook_add = '''
-"  au MyAutoCmd VimEnter * nested colorscheme zazen
-'''
+" `s{char}{label}`
+" nmap f <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+nmap f <Plug>(easymotion-overwin-f2)
 
-[[plugins]]
-repo = 'danishprakash/vim-yami'
-hook_add = '''
-"  au MyAutoCmd VimEnter * nested colorscheme yami
-'''
-
-[[plugins]]
-repo = 'Haron-Prime/Antares'
-hook_add = '''
-au MyAutoCmd VimEnter * nested colorscheme Antares
+" JK motions: Line motions
+" map <Leader>j <Plug>(easymotion-j)
+" map <Leader>k <Plug>(easymotion-k)
 '''
 
