@@ -618,3 +618,37 @@ sessionStorage.setItem('op', 'true');
 const OP_SKIP = sessionStorage.getItem('op');
 endsnippet
 
+snippet async_await_loop_series:js "async/await loop Series 直列処理" b
+// for
+for (let i = 0: i < ${0}.length < i ++ ) {
+  const data = await ${1:promise function}(${0}[i]);
+});
+
+// for...of
+for (let item of ${0}) {
+  const data = await ${1:promise function}(item);
+}
+endsnippet
+
+snippet async_await_loop_series:sample:js "async/await loop Series 直列処理 2" b
+const secSleep = sec => new Promise(resolve => setTimeout(resolve, sec * 1000));
+const secSleepWithLog = async sec => {
+  console.log(`  START sleep ${sec}s`);
+  await secSleep(sec);
+  console.log(`  END sleep ${sec}s`);
+}
+(async () => {
+  console.log('START');
+  for ( v of [3, 2, 1] ) {
+    await secSleepWithLog(v);
+  }
+  console.log('END');
+})();
+endsnippet
+
+snippet async_await_loop:js "async/await loop Parallel 並列処理" b
+Promise.all(items.map(async item => {
+  return await getData(item);
+}));
+endsnippet
+

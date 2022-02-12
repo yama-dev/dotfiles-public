@@ -1,28 +1,3 @@
-# A valid snippet should starts with:
-#
-#   snippet trigger_word [ "description" [ options ] ]
-#
-# and end with:
-#
-#   endsnippet
-#
-# Snippet options:
-#
-#   b - Beginning of line.
-#   i - In-word expansion.
-#   w - Word boundary.
-#   r - Regular expression
-#   e - Custom context snippet
-#   A - Snippet will be triggered automatically, when condition matches.
-#
-# Basic example:
-#
-#   snippet emitter "emitter properties" b
-#   private readonly ${1} = new Emitter<$2>()
-#   public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
-#   endsnippet
-#
-# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
 snippet commentout_v1:js "v1"
 /*!
@@ -566,4 +541,38 @@ snippet const:props:js "const props ...props" i
 const {
   ${1},
 } = props;${0}
+endsnippet
+
+snippet async_await_loop_series:js "async/await loop Series 直列処理" b
+// for
+for (let i = 0: i < ${0}.length < i ++ ) {
+  const data = await ${1:promise function}(${0}[i]);
+});
+
+// for...of
+for (let item of ${0}) {
+  const data = await ${1:promise function}(item);
+}
+endsnippet
+
+snippet async_await_loop_series:sample:js "async/await loop Series 直列処理 2" b
+const secSleep = sec => new Promise(resolve => setTimeout(resolve, sec * 1000));
+const secSleepWithLog = async sec => {
+  console.log(`  START sleep ${sec}s`);
+  await secSleep(sec);
+  console.log(`  END sleep ${sec}s`);
+}
+(async () => {
+  console.log('START');
+  for ( v of [3, 2, 1] ) {
+    await secSleepWithLog(v);
+  }
+  console.log('END');
+})();
+endsnippet
+
+snippet async_await_loop:js "async/await loop Parallel 並列処理" b
+Promise.all(items.map(async item => {
+  return await getData(item);
+}));
 endsnippet
