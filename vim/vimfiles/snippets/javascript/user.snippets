@@ -1,30 +1,5 @@
-# A valid snippet should starts with:
-#
-#   snippet trigger_word [ "description" [ options ] ]
-#
-# and end with:
-#
-#   endsnippet
-#
-# Snippet options:
-#
-#   b - Beginning of line.
-#   i - In-word expansion.
-#   w - Word boundary.
-#   r - Regular expression
-#   e - Custom context snippet
-#   A - Snippet will be triggered automatically, when condition matches.
-#
-# Basic example:
-#
-#   snippet emitter "emitter properties" b
-#   private readonly ${1} = new Emitter<$2>()
-#   public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
-#   endsnippet
-#
-# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
-snippet commentout_v1:js "v1"
+snippet commentout_v1:js "v1" b
 /*!
   * JavaScript Library v1.0.0
   * https://github.com/yama-dev/
@@ -35,9 +10,9 @@ snippet commentout_v1:js "v1"
 ${0}
 endsnippet
 
-snippet commentout_v2:js "v2"
+snippet commentout_v2:js "v2" b
 /**
-  * ${0}
+  * ${1}
   *
   * @attribute videoId
   * @type string
@@ -46,7 +21,7 @@ snippet commentout_v2:js "v2"
 ${0}
 endsnippet
 
-snippet commentout_v3:js "v3"
+snippet commentout_v3:js "v3" b
 /**
   * ${0}
   *
@@ -64,39 +39,6 @@ endsnippet
 # Vanilla
 # ---
 
-snippet class:js "class構文(es6)"
-class ${1:#:class_name} {
-  constructor(){
-    if(!window.console) {window.console = { log: function(msg){} };}
-    this.Init();
-  }
-  Init(){
-    ${0}
-  }
-}
-endsnippet
-
-snippet import:js "import構文(es6)"
-import $ from "jquery";
-window.jQuery = window.$ = $;
-require('bootstrap');
-import 'velocity-animate';
-import _ from 'lodash';
-import { API_METHOD, API_URL } from './_config.es6';
-endsnippet
-
-snippet export:js "export構文(es6)"
-export default class ${1:#:class_name} {
-  constructor(url) {
-    this.url      = url;
-    this.htmlText = '';
-  }
-  Init() {
-    ${0}
-  }
-}
-endsnippet
-
 snippet querySelector:js "document select"
 document.querySelector(${1});
 ${0}
@@ -107,32 +49,32 @@ document.querySelectorAll(${1});
 ${0}
 endsnippet
 
-snippet offset:js "Get offsets of document(javascript)"
+snippet offset:js "Get offsets of document(javascript)" b
 let offsetTop = document.querySelector(${1}).offsetTop;
 let offsetLeft = document.querySelector($1).offsetLeft;
 ${0}
 endsnippet
 
-snippet scrolltop:js "Get scroll position of window(javascript)"
+snippet scrolltop:js "Get scroll position of window(javascript)" b
 let scrollTop = window.pageYOffset;
 ${0}
 endsnippet
 
-snippet width:js "Get width of element"
+snippet width:js "Get width of element" b
 document.clientWidth; // paddingを含んだ幅
 document.scrollWidth; // paddingを含んだ画面上に表示されていないコンテンツを含む幅
 document.offsetWidth; // border、padding、スクロールバーを含んだ幅
 ${0}
 endsnippet
 
-snippet height:js "Get height of element"
+snippet height:js "Get height of element" b
 document.clientHeight; // paddingを含んだ高さ
 document.scrollHeight; // paddingを含んだ画面上に表示されていないコンテンツを含む高さ
 document.offsetHeight; // border、padding、スクロールバーを含んだ高さ
 ${0}
 endsnippet
 
-snippet window_size:js "Get width and height of window"
+snippet window_size:js "Get width and height of window" b
 window.innerWidth;  // スクロールバーを含まないウィンドウの幅
 window.innerHeight; // スクロールバーを含まないウィンドウの高さ
 window.outerWidth;  // スクロールバーを含んだウィンドウの幅
@@ -140,43 +82,43 @@ window.outerHeight; // スクロールバーを含んだウィンドウの高さ
 ${0}
 endsnippet
 
-snippet addEventListener([all]):js
+snippet addEventListener([all]):js "" b
 ${1}.addEventListener('${2:click}', (event) => {
   ${3}
 });
 endsnippet
 
-snippet addEventListener(click):js
+snippet addEventListener(click):js "" b
 ${1}.addEventListener('click', (event) => {
   ${2}
 });
 endsnippet
 
-snippet addEventListener(DOMContentLoaded):js
+snippet addEventListener(DOMContentLoaded):js "" b
 document.addEventListener('DOMContentLoaded', function(event) {
   ${1}
 });
 endsnippet
 
-snippet addEventListener(load):js
+snippet addEventListener(load):js "" b
 window.addEventListener('load', (event) => {
   ${1}
 });
 endsnippet
 
-snippet addEventListener(scroll):js
+snippet addEventListener(scroll):js "" b
 window.addEventListener('scroll', (event) => {
   ${1}
 });
 endsnippet
 
-snippet addEventListener(resize):js
+snippet addEventListener(resize):js "" b
 window.addEventListener('resize', (event) => {
   ${1}
 });
 endsnippet
 
-snippet XMLHttpRequest(GET):js "XMLHttpRequest Template"
+snippet XMLHttpRequest(GET):js "XMLHttpRequest Template" b
 let xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function () {
   if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
@@ -187,19 +129,23 @@ xhr.open('${2:GET}','${3:./api/}',true);
 xhr.send(null);
 endsnippet
 
-snippet random_between:js "ランダム数 生成"
+snippet random_between:js "ランダム数 生成" b
 // 5〜10の乱数を発生 [5]と[11-5]を指定する
 // ( Math.random() * ( ( max + 1 ) - min ) ) + min
 let rand = Math.floor( Math.random() * 6 ) + 5 ;
 ${0}
 endsnippet
 
-snippet scrollTo:js "指定の位置へ移動(javascript)"
+snippet random_serial_number:js "連番 生成" b
+  let ${0} = [...Array(${1}).keys()].map(i => ++i);
+endsnippet
+
+snippet scrollTo:js "指定の位置へ移動(javascript)" b
 window.scrollTo(0,0);
 ${0}
 endsnippet
 
-snippet set_get_style:js "javascriptでのStyle指定"
+snippet set_get_style:js "javascriptでのStyle指定" b
 elem.style.cssText = 'color: blue';
 
 elem.setAttribute('style', 'color: blue');
@@ -208,7 +154,7 @@ elem.style.color = 'blue';
 ${0}
 endsnippet
 
-snippet getAttribute:js "属性の取得、変更(attr)"
+snippet getAttribute:js "属性の取得、変更(attr)" b
 document.querySelector('${1}').getAttribute('${2}');
 document.querySelector('$1').setAttribute('$2', './image.jpg');
 ${0}
@@ -218,7 +164,7 @@ endsnippet
 # RegularExpression
 # ---
 
-snippet regexp_match_$1:js "正規表現(RegExp.$1)"
+snippet regexp_match_$1:js "正規表現(RegExp.$1)" b
 location.pathname.match(/recipe\/(.+)\.html/g);
 var _type = RegExp.\$1;
 ${0}
@@ -234,7 +180,7 @@ $(function(){
 });
 endsnippet
 
-snippet get_height:jQuery "Get width of element(jQuery)"
+snippet get_height:jQuery "Get width of element(jQuery)" b
 $('${1}').width();        // 要素の幅のみ
 $('$1').innerWidth();     // 要素のpaddingを含んだ幅
 $('$1').outerWidth();     // 要素のborder、paddingを含んだ幅
@@ -293,13 +239,13 @@ $.cookie( '${0}' , '${1:#:value}' , { expires: ${2:#:date} , path: '/', domain: 
 $.removeCookie('${0}',{ path:'/' });
 endsnippet
 
-snippet ajax_done:jQuery "$.ajax(done)"
+snippet jq_ajax_done:user "$.ajax(done)"
 $.ajax({
-  type: '${1:GET}',
+  type: '${1|GET,POST|}',
   url: '${2}',
-  dataType: '${3:jsonp}',
+  dataType: '${3|jsonp,json,html,xml,script|}',
   jsonpCallback: 'callback',
-  cache: false
+  cache: ${4|false,true|}
 }).done(function(data){
   ${4}
 }).fail(function(data){
@@ -309,13 +255,13 @@ $.ajax({
 });
 endsnippet
 
-snippet ajax_then:jQuery "$.ajx(then)"
+snippet jq_ajax_then:user "$.ajx(then)"
 $.ajax({
-  type: '${1:GET}',
+  type: '${1|GET,POST|}',
   url: '${2}',
-  dataType: '${3:jsonp}',
+  dataType: '${3|jsonp,json,html,xml,script|}',
   jsonpCallback: 'callback',
-  cache: false
+  cache: ${4|false,true|}
 }).then(
   function(data){
     ${5}
@@ -490,15 +436,9 @@ setMouseStalker(){
 };
 endsnippet
 
-snippet append:insertBefore:vanilla "append, prepend, insert" b
+snippet append:insertBefore:vanilla "insertBefore" b
 parentElement.insertBefore(newElement, referenceElement);
 
-document.querySelector('div').appendChild(newElement);
-
-document.body.insertAdjacentHTML('beforebegin', '<div>beforebegin</div>');
-document.body.insertAdjacentHTML('afterbegin', '<div>afterbegin</div>');
-document.body.insertAdjacentHTML('beforeend', '<div>beforeend</div>');
-document.body.insertAdjacentHTML('afterend', '<div>afterend</div>');
 endsnippet
 
 snippet append:all:list:vanilla "append, prepend, insert" b
@@ -528,7 +468,7 @@ setTimeout(function(){
 }, ${1:1000});
 endsnippet
 
-snippet marquee:jQuery "marquee animation" b
+snippet marquee:user "marquee animation" b
 let setMarquee = () => {
   function motionMarquee(index, w, x){
     $('$1').eq(index).find('span').delay(3000).animate({left: x * -1}, (x * 20),'linear',function(){
@@ -600,7 +540,6 @@ endsnippet
 snippet self:js "let _self = this;" b
 let _self = this;
 endsnippet
-
 
 snippet detectMobile:simple:js "detectMobile" b 
 const COMMON = {
