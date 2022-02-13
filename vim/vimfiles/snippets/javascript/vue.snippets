@@ -1,0 +1,649 @@
+
+# snipsnap
+# @link https://github.com/snipsnapdev/snipsnap
+
+snippet vue_template:vue "template element"
+<template>
+  <${1:div}$2>
+    $0
+  </${1:div}>
+</template>
+endsnippet
+
+snippet vue_v-text:vue "Expects: string. Updates the element’s textContent."
+v-text="${1:msg}"
+endsnippet
+
+snippet vue_v-html:vue "Expects: string. Updates the element’s innerHTML."
+v-html="${1:html}"
+endsnippet
+
+snippet vue_v-show:vue "Expects: any"
+v-show="${1:condition}"
+endsnippet
+
+snippet vue_v-if:vue "Expects: any"
+v-if="${1:condition}"
+endsnippet
+
+snippet vue_v-else:vue "Does not expect expression. previous sibling element must have v-if or v-else-if."
+v-else
+endsnippet
+
+snippet vue_v-else-if:vue "Expects: any. previous sibling element must have v-if or v-else-if."
+v-else-if="${1:condition}"
+endsnippet
+
+snippet vue_v-for-without-key:vue "Expects: Array | Object | number | string"
+v-for="${1:item} in ${2:items}"
+endsnippet
+
+snippet vue_v-for:vue "Expects: Array | Object | number | string"
+v-for="(${1:item}, ${2:index}) in ${3:items}" :key="${4:index}"
+endsnippet
+
+snippet vue_v-on:vue "Expects: Function | Inline Statement"
+v-on:${1:event}="${2:handle}"
+endsnippet
+
+snippet vue_v-bind:vue "Expects: any (with argument) | Object (without argument)"
+v-bind$1="${2}"
+endsnippet
+
+snippet vue_v-model:vue "Expects: varies based on value of form inputs element or output of components"
+v-model="${1:something}"
+endsnippet
+
+snippet vue_v-pre:vue "Does not expect expression"
+v-pre
+endsnippet
+
+snippet vue_v-cloak:vue "Does not expect expression"
+v-cloak
+endsnippet
+
+snippet vue_v-once:vue "Does not expect expression"
+v-once
+endsnippet
+
+snippet vue_key:vue "Expects: string. Children of the same common parent must have unique keys. Duplicate keys will cause render errors."
+:key="${1:key}"
+endsnippet
+
+snippet vue_ref:vue "Expects: string. ref is used to register a reference to an element or a child component. The reference will be registered under the parent component’s $refs object. If used on a plain DOM element, the reference will be that element; if used on a child component, the reference will be component instance."
+ref="${1:reference}"$0
+endsnippet
+
+snippet vue_slota:vue "slot=''. Expects: string. Used on content inserted into child components to indicate which named slot the content belongs to."
+slot="$1"$0
+endsnippet
+
+snippet vue_slote:vue "<slot></slot>. Expects: string. Used on content inserted into child components to indicate which named slot the content belongs to."
+<slot$1>$2</slot>$0
+endsnippet
+
+snippet vue_slotscope:vue "Used to denote an element or component as a scoped slot. The attribute’s value should be a valid JavaScript expression that can appear in the argument position of a function signature. This means in supported environments you can also use ES2015 destructuring in the expression. Serves as a replacement for scope in 2.5.0+."
+slot-scope="$1"$0
+endsnippet
+
+snippet vue_scope:vue "Used to denote a <template> element as a scoped slot, which is replaced by `slot-scope` in 2.5.0+."
+scope="${1:this api replaced by slot-scope in 2.5.0+}"$0
+endsnippet
+
+snippet vue_component:vue "component element"
+<component :is="${1:componentId}"></component>$0
+endsnippet
+
+snippet vue_keep-alive:vue "keep-alive element"
+<keep-alive$1>
+$2
+</keep-alive>$0
+endsnippet
+
+snippet vue_transition:vue "transition element"
+<transition$1>
+$2
+</transition>$0
+endsnippet
+
+snippet vue_transition-group:vue "transition-group element"
+<transition-group$1>
+$2
+</transition-group>
+endsnippet
+
+snippet vue_enter-class:vue "enter-class=''. Expects: string."
+enter-class="$1"$0
+endsnippet
+
+snippet vue_leave-class:vue "leave-class=''. Expects: string."
+leave-class="$1"$0
+endsnippet
+
+snippet vue_appear-class:vue "appear-class=''. Expects: string."
+appear-class="$1"$0
+endsnippet
+
+snippet vue_enter-to-class:vue "enter-to-class=''. Expects: string."
+enter-to-class="$1"$0
+endsnippet
+
+snippet vue_leave-to-class:vue "leave-to-class=''. Expects: string."
+leave-to-class="$1"$0
+endsnippet
+
+snippet vue_appear-to-class:vue "appear-to-class=''. Expects: string."
+appear-to-class="$1"$0
+endsnippet
+
+snippet vue_enter-active-class:vue "enter-active-class=''. Expects: string."
+enter-active-class="$1"$0
+endsnippet
+
+snippet vue_leave-active-class:vue "leave-active-class=''. Expects: string."
+leave-active-class="$1"$0
+endsnippet
+
+snippet vue_appear-active-class:vue "appear-active-class=''. Expects: string."
+appear-active-class="$1"$0
+endsnippet
+
+snippet vue_before-enter:vue "@before-enter=''"
+@before-enter="$1"$0
+endsnippet
+
+snippet vue_before-leave:vue "@before-leave=''"
+@before-leave="$1"$0
+endsnippet
+
+snippet vue_before-appear:vue "@before-appear=''"
+@before-appear="$1"$0
+endsnippet
+
+snippet vue_enter:vue "@enter=''"
+@enter="$1"$0
+endsnippet
+
+snippet vue_leave:vue "@leave=''"
+@leave="$1"$0
+endsnippet
+
+snippet vue_appear:vue "@appear=''"
+@appear="$1"$0
+endsnippet
+
+snippet vue_after-enter:vue "@after-enter=''"
+@after-enter="$1"$0
+endsnippet
+
+snippet vue_after-leave:vue "@after-leave=''"
+@after-leave="$1"$0
+endsnippet
+
+snippet vue_after-appear:vue "@after-appear=''"
+@after-appear="$1"$0
+endsnippet
+
+snippet vue_enter-cancelled:vue "@enter-cancelled=''"
+@enter-cancelled="$1"$0
+endsnippet
+
+snippet vue_leave-cancelled:vue "@leave-cancelled='' (v-show only)"
+@leave-cancelled="$1"$0
+endsnippet
+
+snippet vue_appear-cancelled:vue "@appear-cancelled=''"
+@appear-cancelled="$1"$0
+endsnippet
+
+snippet vue_routerlink:vue "router-link element"
+<router-link $1>$2</router-link>$0
+endsnippet
+
+snippet vue_routerlinkto:vue "<router-link to=''></router-link>. router-link element"
+<router-link to="$1">$2</router-link>$0
+endsnippet
+
+snippet vue_to:vue "to=''"
+to="$1"$0
+endsnippet
+
+snippet vue_tag:vue "tag=''"
+tag="$1"$0
+endsnippet
+
+snippet vue_routerview:vue "router-view element"
+<router-view>$1</router-view>$0
+endsnippet
+
+snippet vue_data:vue "Vue Component Data"
+data() {
+  return {
+    ${1:key}: ${2:value}
+  }
+},
+endsnippet
+
+snippet vue_methods:vue "vue method"
+methods: {
+  ${1:name}() {
+    ${0}
+  }
+},
+endsnippet
+
+snippet vue_computed:vue "computed value"
+computed: {
+  ${1:name}() {
+    return this.${2:data} ${0}
+  }
+},
+endsnippet
+
+snippet vue_lifecycle_beforecreate:vue "beforeCreate lifecycle method"
+beforeCreate () {
+  ${0};
+},
+endsnippet
+
+snippet vue_lifecycle_created:vue "created lifecycle method"
+created () {
+  ${0};
+},
+endsnippet
+
+snippet vue_lifecycle_beforemount:vue "beforeMount lifecycle method"
+beforeMount () {
+  ${0};
+},
+endsnippet
+
+snippet vue_lifecycle_mounted:vue "mounted lifecycle method"
+mounted () {
+  ${0};
+},
+endsnippet
+
+snippet vue_lifecycle_beforeupdate:vue "beforeUpdate lifecycle method"
+beforeUpdate () {
+  ${0};
+},
+endsnippet
+
+snippet vue_lifecycle_updated:vue "updated lifecycle method"
+updated () {
+  ${0};
+},
+endsnippet
+
+snippet vue_lifecycle_beforedestroy:vue "beforeDestroy lifecycle method"
+beforeDestroy () {
+  ${0};
+},
+endsnippet
+
+snippet vue_lifecycle_destroyed:vue "destroyed lifecycle method"
+destroyed () {
+  ${0};
+},
+endsnippet
+
+snippet vue_watchers:vue "vue watcher"
+watch: {
+  ${1:data}(${2:newValue}, ${3:oldValue}) {
+    ${0}
+  }
+},
+endsnippet
+
+snippet vue_watchers_with_options:vue "vue watcher with options"
+watch: {
+  ${1:data}: {
+    immediate: ${2:true},
+    deep: ${3:true},
+    handler(${4:newValue}, ${5:oldValue}) {
+      ${0}
+    }
+  }
+},
+endsnippet
+
+snippet vue_props_with_default:vue "Vue Props with Default"
+props: {
+  ${1:propName}: {
+    type: ${2:Number},
+    default: ${0}
+  },
+},
+endsnippet
+
+snippet vue_import_file:vue "Import one component into another"
+import ${1:New} from '@/components/${1:New}.vue';
+endsnippet
+
+snippet vue_import_into_the_component:vue "Import one component into another, within export statement"
+components: {
+  ${1:New},
+},
+endsnippet
+
+snippet vue_import_export:vue "import a component and include it in export default"
+import ${1:Name} from '@/components/${1:Name}.vue'
+
+export default {
+  components: {
+    ${1:Name}
+  },
+}
+endsnippet
+
+snippet vue_mapstate:vue "map getters inside a vue component"
+import { mapState } from 'vuex'
+
+export default {
+  computed: {
+    ...mapState([
+      ${1:'nameOfState'},
+    ])
+  },
+}
+endsnippet
+
+snippet vue_mapgetters:vue "mapgetters inside a vue component"
+import { mapGetters } from 'vuex'
+
+export default {
+  computed: {
+    ...mapGetters([
+      ${1:'nameOfGetter'},
+    ])
+  },
+}
+endsnippet
+
+snippet vue_mapmutations:vue "mapmutations inside a vue component"
+import { mapMutations } from 'vuex'
+
+export default {
+  methods: {
+    ...mapMutations([
+      ${1:'nameOfMutation'}, //also supports payload `this.nameOfMutation(amount)` 
+    ])
+  },
+}
+endsnippet
+
+snippet vue_mapactions:vue "mapactions inside a vue component"
+import { mapActions } from 'vuex'
+
+export default {
+  methods: {
+    ...mapActions([
+      ${1:'nameOfAction'}, //also supports payload `this.nameOfAction(amount)` 
+    ])
+  },
+}
+endsnippet
+
+snippet vue_filter:vue "vue filter"
+filters: {
+  ${1:fnName}: function(${2:value}) {
+    return ${2:value}${0};
+  }
+}
+endsnippet
+
+snippet vue_mixin:vue "vue mixin"
+const ${1:mixinName} = {
+  mounted() {
+    console.log('hello from mixin!')
+  },
+}
+endsnippet
+
+snippet vue_use_mixin:vue "vue use mixin"
+mixins: [${1:mixinName}],
+endsnippet
+
+snippet vue_custom_directive:vue "vue custom directive"
+Vue.directive('${1:directiveName}', {
+  bind(el, binding, vnode) {
+    el.style.${2:arg} = binding.value.${2:arg};
+  }
+});
+endsnippet
+
+snippet vue_import_library:vue "import a library"
+import { ${1:libName} } from '${1:libName}'
+endsnippet
+
+snippet vue_import_gsap:vue "component methods options that dispatch an action from vuex store."
+import { TimelineMax, ${1:Ease} } from 'gsap'
+endsnippet
+
+snippet vue_transition_methods_with_javascript_hooks:vue "transition component js hooks"
+beforeEnter(el) {
+  console.log('beforeEnter');
+},
+enter(el, done) {
+  console.log('enter');
+  done();
+},
+beforeLeave(el) {
+  console.log('beforeLeave');
+},
+leave(el, done) {
+  console.log('leave');
+  done();
+},
+endsnippet
+
+snippet vue_commit_vuex_store_in_methods:vue "commit to vuex store in methods for mutation"
+${1:mutationName}() {
+  this.\$store.commit('${1:mutationName}', ${2:payload})
+}
+endsnippet
+
+snippet vue_dispatch_vuex_store_in_methods:vue "dispatch to vuex store in methods for action"
+${1:actionName}() {
+  this.\$store.dispatch('${1:actionName}', ${2:payload})
+}
+endsnippet
+
+snippet vue_incrementer:vue "increment"
+return ${1:this.num} += ${2:1}
+endsnippet
+
+snippet vue_decrementer:vue "decrement"
+return ${1:this.num} -= ${2:1}
+endsnippet
+
+snippet vue_unit_test:vue "unit test component"
+import Vue from 'vue'
+import ${1:HelloWorld} from './components/${1:HelloWorld}'
+
+describe('${1:HelloWorld}.vue', () => {
+  it('${2:should render correct contents}', () => {
+    const Constructor = Vue.extend(${1:HelloWorld})
+    const vm = new Constructor().$mount()
+    expect(vm.$el.querySelector('.hello h1').textContent)
+      .to.equal(${3:'Welcome to Your Vue.js App'})
+  })
+})
+endsnippet
+
+snippet vue_vue.config.js_import:vue "vue.config.js"
+module.exports = {
+  css: {
+    loaderOptions: {
+      ${1:sass}: {
+        data: `${2:@import '@/styles/_variables.scss';}`
+      }
+    }
+  }
+}
+endsnippet
+
+snippet vue_base:vue "Base for Vue File with SCSS"
+<template>
+  <div>
+
+  </div>
+</template>
+
+<script>
+  export default {
+    ${0}
+  }
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+endsnippet
+
+snippet vue_base_postcss:vue "Base for Vue File with PostCSS"
+<template>
+  <div>
+
+  </div>
+</template>
+
+<script>
+  export default {
+    ${0}
+  }
+</script>
+
+<style lang="postcss" scoped>
+
+</style>
+endsnippet
+
+snippet vue_base_css:vue "Base for Vue File with CSS"
+<template>
+  <div>
+
+  </div>
+</template>
+
+<script>
+  export default {
+    ${0}
+  }
+</script>
+
+<style scoped>
+
+</style>
+endsnippet
+
+snippet vue_base_ts:vue "Base for Vue File with Typescript"
+<template>
+  <div>
+
+  </div>
+</template>
+
+<script lang="ts">
+  import Vue from 'vue'
+
+  export default Vue.extend({
+    ${0}
+  })
+</script>
+
+<style scoped>
+
+</style>
+endsnippet
+
+snippet vue_v3_reactive:vue "Set reactive property - Vue Composition API"
+const ${1:name} = reactive({
+  ${2:count}: ${3:0}
+})
+endsnippet
+
+snippet vue_v3_computed:vue "Set computed property - Vue Composition API"
+const ${1:name} = computed(() => {
+  return ${2}
+})
+endsnippet
+
+snippet vue_v3_watch:vue "Requires watching a specific data source, and applies side effects in a separate callback function."
+watch(() => ${1:foo}, (newValue, oldValue) => {
+  ${2}
+})
+endsnippet
+
+snippet vue_v3_watch-array:vue "Requires watching an array, and applies side effects in a separate callback function."
+watch([${1:foo}, ${2:bar}], ([new${1}, new${2}], [prev${1}, prev${2}]) => {
+  ${3}
+})
+endsnippet
+
+snippet vue_v3_watcheffect:vue "Run a function immediately while reactively tracking its dependencies, and re-run it whenever the dependencies have changed."
+watchEffect(() => {
+  ${1}
+})
+endsnippet
+
+snippet vue_v3ref:vue "Takes an inner value and returns a reactive and mutable ref object."
+const ${1:name} = ref(${2:initialValue})
+endsnippet
+
+snippet vue_v3_importlifecyclehook_:vue "Import Lifecycle hooks to use in file"
+import ${1|onBeforeMount,onMounted,onBeforeUpdate,onUpdated,onBeforeUnmount,onUnmounted,,onActivated,onDeactivated,onErrorCaptured,onRenderTracked,onRenderTriggered|} from '${2|vue,@vue/composition-api|}'
+endsnippet
+
+snippet vue_v3_lifecyclehook:vue "Lifecycle hooks can be registered with directly imported `onXXX` functions:"
+${1|onBeforeMount,onMounted,onBeforeUpdate,onUpdated,onBeforeUnmount,onUnmounted,,onActivated,onDeactivated,onErrorCaptured,onRenderTracked,onRenderTriggered|}(() => {${2}})
+endsnippet
+
+snippet vue_v3_base:vue "Base for Vue File Composition API with SCSS"
+<template>
+  <div>
+
+  </div>
+</template>
+
+<script>
+import { ${0|ref,reactive,computed,readonly,watchEffect,watch|} } from '${1|vue,@vue/composition-api|}'
+export default {
+  setup () {
+    ${2}
+
+    return {}
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+endsnippet
+
+snippet vue_v3_base_ts:vue "Base for Vue File Composition API - Typescript"
+<template>
+  <div>
+
+  </div>
+</template>
+
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  setup () {
+    ${0}
+
+    return {}
+  }
+})
+</script>
+
+<style scoped>
+
+</style>
+endsnippet
+

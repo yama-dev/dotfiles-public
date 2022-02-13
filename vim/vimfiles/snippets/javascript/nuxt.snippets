@@ -1,0 +1,66 @@
+
+# snipsnap
+# @link https://github.com/snipsnapdev/snipsnap
+
+snippet nuxt_linkto:nuxt "nuxt-linkto"
+<nuxt-link to="$1">$2</nuxt-link>$0
+endsnippet
+
+snippet nuxt_namedlinkto:nuxt "nuxt-namedlinkto"
+<nuxt-link :to="{  ${1|name,path|}: '${2:value}', ${3|params,query|}: {  ${4:key}: '${5:value}'  }  }">$6</nuxt-link>$0
+endsnippet
+
+snippet nuxt_view:nuxt "nuxt-view"
+<nuxt>$1</nuxt>$0
+endsnippet
+
+snippet nuxt_namedview:nuxt "nuxt-namedview"
+<nuxt name="$1">$2</nuxt>$0
+endsnippet
+
+snippet nuxt_child:nuxt "nuxt-child"
+<nuxt-child $1/>$0
+endsnippet
+
+snippet nuxt_asyncdata:nuxt "Fetch and pre-render data on the server without using a store. The result from asyncData will be merged with data"
+asyncData ({isDev, route, store, env, params, query, req, res, redirect, error}) {
+  return { ${1:data} }
+
+},
+endsnippet
+
+snippet nuxt_head:nuxt "Use the head method to set the HTML Head tags for the current page"
+head () {
+  return {
+    title: '${1:title}',
+    meta: [
+      { hid: '${2:description}', name: '${3:description}', content: '${4:custom description}' }
+    ]
+  }
+},
+endsnippet
+
+snippet nuxt_middleware:nuxt "Set the middleware for a specific page of the application."
+middleware ({ store, redirect }) {
+  ${1:data}
+},
+endsnippet
+
+snippet nuxt_validate:nuxt "Validate is called every time before navigating to a new route."
+validate({ params, query, store }) {
+  ${1:data}
+},
+endsnippet
+
+snippet nuxt_watchquery:nuxt "Use the watchQuery key to set up a watcher for query strings."
+watchQuery (newQuery, oldQuery) {
+  ${1:data}
+},
+endsnippet
+
+snippet nuxt_serverinit:nuxt "In universal mode, useful to fetch data on the server and give directly to the client-side."
+nuxtServerInit ({ commit }, { req }) {
+  ${1:data}
+}
+endsnippet
+
