@@ -1,0 +1,493 @@
+
+snippet jqOn:jquery "jQuery on"
+$(${selector}).on(${eventType|click,change,load,resize,scroll,blur,focus,keydown,keyup,keypress,mouseup,mousedown,mousemove,submit|}, (e)=>{
+  $0
+});
+endsnippet
+
+snippet jqOnWithData:jquery "jQuery on Delegate"
+$(${selector}).on(${eventType|click,change,load,resize,scroll,blur,focus,keydown,keyup,keypress,mouseup,mousedown,mousemove,submit|}, ${eventData}, (e)=>{
+  $0
+});
+endsnippet
+
+snippet jqOnClick:jquery "jQuery on click"
+$(${selector}).on('click', (e)=>{ 
+  $0
+});
+endsnippet
+
+snippet jqOne:jquery "jQuery one"
+$(${selector}).one(${events}, function (e) {
+  $0
+});
+endsnippet
+
+snippet jqAfter:jquery "jQuery after"
+$(${selector}).after(${content});
+endsnippet
+
+snippet jqBefore:jquery "jQuery before"
+$(${selector}).before(${content});
+endsnippet
+
+snippet jqAppend:jquery "jQuery append"
+$(${selector}).append(${content});
+endsnippet
+
+snippet jqAppendTo:jquery "jQuery appendTo"
+$(${content}).appendTo(${selector});
+endsnippet
+
+snippet jqAttrGet:jquery "jQuery attr Get"
+$(${selector}).attr(${attributeName});
+endsnippet
+
+snippet jqAttrSet:jquery "jQuery attr Set"
+$(${selector}).attr(${attributeName}, ${value});
+endsnippet
+
+snippet jqAttrRemove:jquery "jQuery attr Remove"
+$(${selector}).removeAttr(${attributeName});
+endsnippet
+
+snippet jqAttrSetFn:jquery "jQuery attr function"
+$(${selector}).attr(${attributeName}, function (index, attr) { 
+  $0 
+});
+endsnippet
+
+snippet jqAttrSetObj:jquery "jQuery attr Object"
+$(${selector}).attr({
+  ${name}: ${value}
+  $0
+});
+endsnippet
+
+snippet jqClassAdd:jquery "jQuery addClass"
+$(${selector}).addClass(${className});
+endsnippet
+
+snippet jqClassRemove:jquery "jQuery removeClass"
+$(${selector}).removeClass(${className});
+endsnippet
+
+snippet jqClassToggle:jquery "jQuery toggleClass"
+$(${selector}).toggleClass(${className});
+endsnippet
+
+snippet jqClassToggleSwitch:jquery "jQuery toggleClass Switch argument"
+$(${selector}).toggleClass(${className}, ${switch});
+endsnippet
+
+snippet jqClone:jquery "jQuery clone"
+$(${selector}).clone(${flag|,true,false|});
+endsnippet
+
+snippet jqCssGet:jquery "jQuery css Get"
+$(${selector}).css(${propertyName});
+endsnippet
+
+snippet jqCssSet:jquery "jQuery css Set"
+$(${selector}).css(${propertyName}, ${value});
+endsnippet
+
+snippet jqCssSetObj:jquery "jQuery css Set object"
+$(${selector}).css({
+  ${propertyName}: ${value}
+  $0
+});
+endsnippet
+
+snippet jqDataGet:jquery "jQuery data Get - data-* attribute."
+$(${selector}).data(${key});
+endsnippet
+
+snippet jqDataSet:jquery "jQuery data Set - data-* attribute."
+$(${selector}).data(${key}, ${value});
+endsnippet
+
+snippet jqDataRemove:jquery "jQuery data Remove - data-* attribute."
+$(${selector}).removeData(${element});
+endsnippet
+
+snippet jqDataSetObj:jquery "jQuery data Set object - data-* attribute."
+$(${selector}).data({
+  ${key}: ${value}
+  $0
+});
+endsnippet
+
+snippet jqOff:jquery "jQuery off target"
+$(${selector}).off(${eventType});
+endsnippet
+
+snippet jqOffAll:jquery "jQuery off all"
+$(${selector}).off();
+endsnippet
+
+snippet jqOffFn:jquery "jQuery off function"
+$(${selector}).off(${eventType}, ${handler});
+endsnippet
+
+snippet jqDocReady:jquery "jQuery document ready"
+$(document).ready(function(){
+  $0
+});
+endsnippet
+
+snippet jqDocReadyShort:jquery "jQuery document ready Short"
+$(function(){
+  $0
+});
+endsnippet
+
+snippet jqEach:jquery
+$.each(${collection}, function (indexInArray, valueOfElement) { 
+  $0 
+});
+endsnippet
+
+snippet jqEachElement:jquery
+$(${selector}).each(function (index, element) {
+  // element == this
+  $0
+});
+endsnippet
+
+snippet jqEmpty:jquery
+$(${selector}).empty();
+endsnippet
+
+snippet jqFadeIn:jquery
+$(${selector}).fadeIn();
+endsnippet
+
+snippet jqFadeInFull:jquery
+$(${selector}).fadeIn(${duration}, function(){
+  $0
+});
+endsnippet
+
+snippet jqFadeOut:jquery
+$(${selector}).fadeOut();
+endsnippet
+
+snippet jqFadeOutFull:jquery
+$(${selector}).fadeOut(${duration}, function(){
+  $0
+});
+endsnippet
+
+snippet jqFadeTo:jquery
+$(${selector}).fadeTo(${duration}, ${opacity});
+endsnippet
+
+snippet jqFadeToFull:jquery
+$(${selector}).fadeTo(${duration}, ${opacity}, function(){
+  $0
+});
+endsnippet
+
+snippet jqHasClass:jquery "jQuery hasClass"
+$(${selector}).hasClass(${className});
+endsnippet
+
+snippet jqHeightGet:jquery "jQuery height Get"
+$(${selector}).height();
+endsnippet
+
+snippet jqHeightSet:jquery "jQuery height Set"
+$(${selector}).height(${value});
+endsnippet
+
+snippet jqOuterHeight:jquery "jQuery outerHeight"
+$(${selector}).outerHeight(${includeMargin});
+endsnippet
+
+snippet jqOuterWidth:jquery "jQuery outerWidth"
+$(${selector}).outerWidth(${includeMargin});
+endsnippet
+
+snippet jqOffsetGet:jquery "jQuery offset"
+var offset = $(${selector}).offset();
+var top = offset.top;
+var left = offset.left;
+$0
+endsnippet
+
+snippet jqFind:jquery
+$(${selector}).find(${selector2});
+endsnippet
+
+snippet jqGet:jquery
+$.get('${url}', ${data},
+  function (data, textStatus, jqXHR) {
+    $0
+  },
+  "${dataType}"
+);
+endsnippet
+
+snippet jqGetJson:jquery "jQuery getJSON"
+$.getJSON('${url}', ${data},
+  function (data, textStatus, jqXHR) {
+    $0
+  }
+);
+endsnippet
+
+snippet jqGetScript:jquery "jQuery getScript"
+$.getScript('${url}', function (script, textStatus, jqXHR) {
+  $0
+});
+endsnippet
+
+snippet jqOffsetParent:jquery "jQuery offsetParent"
+var offset = $(${selector}).offsetParent();
+var top = offset.top;
+var left = offset.left;
+$0
+endsnippet
+
+snippet jqPosition:jquery "jQuery position"
+var position = $(${selector}).position();
+var top = position.top;
+var left = position.left;
+$0
+endsnippet
+
+snippet jqHide:jquery "jQuery hide"
+$(${selector}).hide();
+endsnippet
+
+snippet jqHideFull:jquery "jQuery hide callback"
+$(${selector}).hide(${duration}, function(){
+  $0
+});
+endsnippet
+
+snippet jqHover:jquery "jQuery hover"
+$(${selector}).hover(function(){
+    // over
+    $0
+  }, function(){
+    // out
+  }
+);
+endsnippet
+
+snippet jqHtmlGet:jquery "jQuery html Get"
+$(${selector}).html();
+endsnippet
+
+snippet jqHtmlSet:jquery "jQuery html Set"
+$(${selector}).html(${htmlString});
+endsnippet
+
+snippet jqInnerHeight:jquery "jQuery innerHeight Get"
+$(${selector}).innerHeight();
+endsnippet
+
+snippet jqInnerWidth:jquery "jQuery innerWidth Get"
+$(${selector}).innerWidth();
+endsnippet
+
+snippet jqInsertAfter:jquery "jQuery insertAfter"
+$(${target}).insertAfter(${selector});
+endsnippet
+
+snippet jqInsertBefore:jquery "jQuery insertBefore"
+$(${target}).insertBefore(${selector});
+endsnippet
+
+snippet jqMap:jquery "jQuery $.map"
+$.map(${arrayOrObject}, function (elementOrValue, indexOrKey) {
+  $0
+});
+endsnippet
+
+snippet jqNamespace:template:jquery "jQuery namespace template."
+(function ( ${name}, $, undefined ) {
+  // Private Property
+  myPrivateProperty = "Private Property";
+    
+  // Public Property
+  ${name}.myPublicProperty = "Publically Accessible Property";
+    
+  // Private Method
+  function myPrivateMethod () {
+    
+  }
+    
+  // Public Method
+  ${name}.myPublicMethod = function(){
+    
+  };  
+}(window.${name} = window.${name} || {}, jQuery ));
+endsnippet
+
+snippet jqPlugin:template:jquery "Plugin template."
+(function ($) {
+  jQuery.fn.${pluginName} = function (settings) {
+    var config = {'foo': 'bar'};
+ 
+    if (settings) jQuery.extend(config, settings);
+ 
+    this.each(function(){
+      // element-specific code here
+      $0
+    });
+ 
+    return this;
+  };
+})(jQuery);
+endsnippet
+
+snippet jqPost:jquery "Load data from the server using a HTTP POST request."
+$.post("${url}", ${data},
+  function (data, textStatus, jqXHR) {
+    $0
+  },
+  "${dataType}"
+);
+endsnippet
+
+snippet jqPrepend:jquery "jQuery prepend"
+$(${selector}).prepend(${content});
+endsnippet
+
+snippet jqPrependTo:jquery "jQuery prependTo"
+$(${content}).prependTo(${selector});
+endsnippet
+
+snippet jqRemove:jquery "jQuery remove"
+$(${selector}).remove();
+endsnippet
+
+snippet jqRemoveExp:jquery "jQuery remove"
+$(${selector}).remove(${expression});
+endsnippet
+
+snippet jqReplaceAll:jquery "jQuery replaceAll"
+$(${selector}).replaceAll(${target});
+endsnippet
+
+snippet jqReplaceWith:jquery "jQuery replaceWith"
+$(${selector}).replaceWith(${newContent});
+endsnippet
+
+snippet jqScrollTopGet:jquery "jQuery scrollTop"
+$(${selector}).scrollTop();
+endsnippet
+
+snippet jqScrollTopSet:jquery "jQuery scrollTop value"
+$(${selector}).scrollTop(${value});
+endsnippet
+
+snippet jqShow:jquery "jQuery show"
+$(${selector}).show();
+endsnippet
+
+snippet jqShowFull:jquery "jQuery show callback"
+$(${selector}).show(${duration}, function(){
+  $0
+});
+endsnippet
+
+snippet jqSlideDown:jquery "jQuery slideDown"
+$(${selector}).slideDown();
+endsnippet
+
+snippet jqSlideDownFull:jquery "jQuery slideDown callback"
+$(${selector}).slideDown(${duration}, function(){
+  $0
+});
+endsnippet
+
+snippet jqSlideToggle:jquery "jQuery slideToggle"
+$(${selector}).slideToggle();
+endsnippet
+
+snippet jqSlideToggleFull:jquery "jQuery slideToggle duration callback"
+$(${selector}).slideToggle(${duration}, function(){
+  $0
+});
+endsnippet
+
+snippet jqSlideUp:jquery "jQuery slideUp"
+$(${selector}).slideUp();
+endsnippet
+
+snippet jqSlideUpFull:jquery "jQuery slideUp callback"
+$(${selector}).slideUp(${duration}, function(){
+  $0
+});
+endsnippet
+
+snippet jqTextGet:jquery "jQuery text Get"
+$(${selector}).text();
+endsnippet
+
+snippet jqTextSet:jquery "jQuery text Set"
+$(${selector}).text(${textString});
+endsnippet
+
+snippet jqToggle:jquery "jQuery toggle"
+$(${selector}).toggle();
+endsnippet
+
+snippet jqToggleFull:jquery "jQuery toggle callback"
+$(${selector}).toggle(${duration}, function(){
+  $0
+});
+endsnippet
+
+snippet jqToggleSwitch:jquery "jQuery toggle show_or_hide"
+$(${selector}).toggle(${showOrHide});
+endsnippet
+
+snippet jqTrigger:jquery "jQuery trigger"
+$(${selector}).trigger(${eventType});
+endsnippet
+
+snippet jqTriggerWithData:jquery "jQuery trigger"
+$(${selector}).trigger(${eventType}, { ${name}: ${value} });
+endsnippet
+
+snippet jqTriggerHandler:jquery "jQuery triggerHandler"
+$(${selector}).triggerHandler(${eventType});
+endsnippet
+
+snippet jqTriggerHandlerWithData:jquery "jQuery triggerHandler"
+$(${selector}).triggerHandler(${eventType}, { ${name}: ${value} });
+endsnippet
+
+snippet jqValGet:jquery "jQuery val Get"
+$(${selector}).val();
+endsnippet
+
+snippet jqValSet:jquery "jQuery val Set"
+$(${selector}).val(${value});
+endsnippet
+
+snippet jqWidthGet:jquery "jQuery width Get"
+$(${selector}).width();
+endsnippet
+
+snippet jqWidthSet:jquery "jQuery width Set"
+$(${selector}).width(${value});
+endsnippet
+
+snippet jqWrap:jquery "jQuery wrap"
+$(${selector}).wrap("<${wrappingElement}></${wrappingElement}>");
+endsnippet
+
+snippet jqWrapAll:jquery "jQuery wrapAll"
+$(${selector}).wrapAll("<${wrappingElement}></${wrappingElement}>");
+endsnippet
+
+snippet jqWrapInner:jquery "jQuery wrapInner"
+$(${selector}).wrapInner("<${wrappingElement}></${wrappingElement}>");
+endsnippet
+
