@@ -1,0 +1,83 @@
+
+# snipsnap
+# @link https://github.com/snipsnapdev/snipsnap
+
+snippet next_getserversideprops:next "If you export an async function called getServerSideProps from a page, Next.js will pre-render this page on each request using the data returned by getServerSideProps. The context parameter is an object containing the following keys: params, req, res, query, preview, previewData."
+export async function getServerSideProps(${1:context}) {
+  return {
+    props: {}, 
+  }
+}
+endsnippet
+
+snippet next_getstaticprops:next "If you export an async function called getStaticProps from a page, Next.js will pre-render this page at build time using the props returned by getStaticProps. The context parameter is an object containing the following keys: params, preview, previewData."
+export async function getStaticProps(${1:context}) {
+  return {
+    props: {}, 
+  }
+}
+endsnippet
+
+snippet next_getstaticpaths:next "If a page has dynamic routes (documentation) and uses getStaticProps it needs to define a list of paths that have to be rendered to HTML at build time. If you export an async function called getStaticPaths from a page that uses dynamic routes, Next.js will statically pre-render all the paths specified by getStaticPaths."
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { ... } } 
+    ],
+    fallback: ${1|true,false|}
+  };
+}
+endsnippet
+
+snippet next_import_userouter:next "next-import-use-router"
+import { useRouter } from 'next/router'
+endsnippet
+
+snippet next_import_link:next "next-import-link"
+import Link from 'next/link'
+endsnippet
+
+snippet next_link:next "Link accepts the following props: href, as, passHref, prefetch, replace, scroll, shallow"
+<Link href="${1:#}">
+  <a>${2:content}</a>
+</Link>
+endsnippet
+
+snippet next_link_url_object:next "next-link-url-object"
+<Link href={{ pathname: '${1:/path}', query: { ${2:paramName}: '${3:paramValue}' } }}>
+  <a>${4:content}</a>
+</Link>
+endsnippet
+
+snippet next_link_dynamic_route:next "next-link-dynamic-route"
+<Link href="${1:/path/[id]}" as="${2:/path/${id}}">
+  <a>${3:content}</a>
+</Link>
+endsnippet
+
+snippet next_import_head:next "next-import-head"
+import Head from 'next/head'
+endsnippet
+
+snippet next_head:next "next-head"
+<Head>
+${1:content}
+</Head>
+endsnippet
+
+snippet next_api:next "API routes provide built in middlewares which parse the incoming request. Those middlewares are: req.cookies, req.body, req.query."
+export default (req, res) => {
+  res.json(${1:object});
+};
+endsnippet
+
+snippet next_api_method:next "next-api-method"
+export default (req, res) => {
+  if (req.method === 'POST') {
+    $1
+  } else {
+    $2
+  }
+};
+endsnippet
+

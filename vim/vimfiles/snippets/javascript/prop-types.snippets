@@ -1,0 +1,146 @@
+
+# snipsnap
+# @link https://github.com/snipsnapdev/snipsnap
+
+snippet prop-types_import:prop-types "prop-types-import"
+import PropTypes from 'prop-types'
+
+endsnippet
+
+snippet prop-types_array:prop-types "Array prop type"
+PropTypes.array,
+endsnippet
+
+snippet prop-types_array_required:prop-types "Array prop type required"
+PropTypes.array.isRequired,
+endsnippet
+
+snippet prop-types_bool:prop-types "Bool prop type"
+PropTypes.bool,
+endsnippet
+
+snippet prop-types_bool_required:prop-types "Bool prop type required"
+PropTypes.bool.isRequired,
+endsnippet
+
+snippet prop-types_func:prop-types "Func prop type"
+PropTypes.func,
+endsnippet
+
+snippet prop-types_func_required:prop-types "Func prop type required"
+PropTypes.func.isRequired,
+endsnippet
+
+snippet prop-types_number:prop-types "Number prop type"
+PropTypes.number,
+endsnippet
+
+snippet prop-types_number_required:prop-types "Number prop type required"
+PropTypes.number.isRequired,
+endsnippet
+
+snippet prop-types_object:prop-types "Object prop type"
+PropTypes.object,
+endsnippet
+
+snippet prop-types_object_required:prop-types "Object prop type required"
+PropTypes.object.isRequired,
+endsnippet
+
+snippet prop-types_string:prop-types "String prop type"
+PropTypes.string,
+endsnippet
+
+snippet prop-types_string_required:prop-types "String prop type required"
+PropTypes.string.isRequired,
+endsnippet
+
+snippet prop-types_node:prop-types "Anything that can be rendered: numbers, strings, elements or an array"
+PropTypes.node,
+endsnippet
+
+snippet prop-types_node_required:prop-types "Anything that can be rendered: numbers, strings, elements or an array required"
+PropTypes.node.isRequired,
+endsnippet
+
+snippet prop-types_element:prop-types "React element prop type"
+PropTypes.element,
+endsnippet
+
+snippet prop-types_element_required:prop-types "React element prop type required"
+PropTypes.element.isRequired,
+endsnippet
+
+snippet prop-types_instanceof:prop-types "Is an instance of a class prop type"
+PropTypes.instanceOf($0),
+endsnippet
+
+snippet prop-types_instanceof_required:prop-types "Is an instance of a class prop type required"
+PropTypes.instanceOf($0).isRequired,
+endsnippet
+
+snippet prop-types_enum:prop-types "Prop type limited to specific values by treating it as an enum"
+PropTypes.oneOf(['$0']),
+endsnippet
+
+snippet prop-types_enum_required:prop-types "Prop type limited to specific values by treating it as an enum required"
+PropTypes.oneOf(['$0']).isRequired,
+endsnippet
+
+snippet prop-types_oneoftype:prop-types "An object that could be one of many types"
+PropTypes.oneOfType([
+  $0
+]),
+endsnippet
+
+snippet prop-types_oneoftype_required:prop-types "An object that could be one of many types required"
+PropTypes.oneOfType([
+  $0
+]).isRequired,
+endsnippet
+
+snippet prop-types_arrayof:prop-types "An array of a certain type"
+PropTypes.arrayOf($0),
+endsnippet
+
+snippet prop-types_arrayof_required:prop-types "An array of a certain type required"
+PropTypes.arrayOf($0).isRequired,
+endsnippet
+
+snippet prop-types_objectof:prop-types "An object with property values of a certain type"
+PropTypes.objectOf($0),
+endsnippet
+
+snippet prop-types_objectof_required:prop-types "An object with property values of a certain type required"
+PropTypes.objectOf($0).isRequired,
+endsnippet
+
+snippet prop-types_shape:prop-types "An object taking on a particular shape"
+PropTypes.shape({
+  $0
+}),
+endsnippet
+
+snippet prop-types_shape_required:prop-types "An object taking on a particular shape required"
+PropTypes.shape({
+  $0
+}).isRequired,
+endsnippet
+
+snippet prop-types_static:prop-types "prop-type-static"
+static propTypes = {
+$0
+}
+
+endsnippet
+
+snippet prop-types_any:prop-types "Any prop type"
+PropTypes.any,
+endsnippet
+
+snippet prop-types_init:prop-types "prop-type-init"
+${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}.propTypes = {
+ ${2:property}: ${3:PropTypes.node.isRequired},
+}
+endsnippet
+

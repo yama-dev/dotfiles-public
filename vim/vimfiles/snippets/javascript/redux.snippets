@@ -1,0 +1,67 @@
+
+# snipsnap
+# @link https://github.com/snipsnapdev/snipsnap
+
+snippet redux_import_connect:redux "Import connect from Redux"
+import { connect } from 'react-redux'
+
+endsnippet
+
+snippet redux_map_props:redux "Creates mapStateToProps function."
+const mapStateToProps = (state) => ({
+  ${1}
+})
+
+const mapDispatchToProps = {
+  
+}
+
+endsnippet
+
+snippet redux_const:redux "redux-const"
+export const ${1:constantName} = '${1:constantName}'
+endsnippet
+
+snippet redux_reducer:redux "Redux reducer template"
+const initialState = {
+
+}
+
+export default (state = initialState, { type, payload }) => {
+  switch (type) {
+
+  case ${1:typeName}:
+    return { ...state, ...payload }
+
+  default:
+    return state
+  }
+}
+
+endsnippet
+
+snippet redux_action:redux "Redux action template"
+const ${1:actionCreatorName} = ${2:payload} => {
+  return {
+    type: '${3:ACTION_TYPE}',
+    payload: ${2:payload},
+  };
+};
+endsnippet
+
+snippet redux_import_hooks:redux "Import Redux hooks (useSelector, useDispatch)"
+import { useSelector, useDispatch } from 'react-redux';
+endsnippet
+
+snippet redux_useselector:redux "Redux useSelector() hook"
+const $1 = useSelector(state => state.$1);
+endsnippet
+
+snippet redux_usedispatch:redux "Redux useDispatch() hook"
+const dispatch = useDispatch();
+endsnippet
+
+snippet redux_dispatch:redux "Redux dispatch hook"
+const $1 = $2 => dispatch($3);
+endsnippet
+

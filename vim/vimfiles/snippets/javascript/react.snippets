@@ -1,0 +1,563 @@
+
+# snipsnap
+# @link https://github.com/snipsnapdev/snipsnap
+
+snippet react_import:react "import React"
+import React from 'react'
+
+endsnippet
+
+snippet react_import_component:react "import-react-component"
+import React, { Component } from 'react'
+
+endsnippet
+
+snippet react_import_component_proptypes:react "import-react-component-prop-types"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
+endsnippet
+
+snippet react_import_purecomponent:react "import-react-purecomponent"
+import React, { PureComponent } from 'react'
+
+endsnippet
+
+snippet react_import_purecomponent_proptypes:react "import-react-pure-component-prop-types"
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+
+endsnippet
+
+snippet react_import_memo:react "import-react-memo"
+import React, { memo } from 'react'
+
+endsnippet
+
+snippet react_import_memo_proptypes:react "import-react-memo-prop-types"
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
+
+endsnippet
+
+snippet react_import_usestate:react "import-react-usestate"
+import React, { useState } from 'react'
+
+endsnippet
+
+snippet react_import_usestate_useeffect:react "import-react-usestate-useeffect"
+import React, { useState, useEffect } from 'react'
+
+endsnippet
+
+snippet react_component_class:react "Creates a React component class with ES7 module system"
+import React, { Component } from 'react'
+
+export default class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} extends Component {
+  render() {
+    return (
+      <div>
+        $0
+      </div>
+    )
+  }
+}
+
+endsnippet
+
+snippet react_component_class_export:react "Creates a React component class with ES7 module system"
+import React, { Component } from 'react'
+
+export class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} extends Component {
+  render() {
+    return (
+      <div>
+        $0
+      </div>
+    )
+  }
+}
+
+export default ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}
+
+endsnippet
+
+snippet react_component_functional_export:react "Creates a React Functional Component with ES7 module system"
+import React from 'react'
+
+function ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}() {
+  return (
+    <div>
+      $0
+    </div>
+  )
+}
+
+export default ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}
+
+endsnippet
+
+snippet react_component_functional:react "Creates a React Functional Component with ES7 module system"
+import React from 'react'
+
+export default function ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}() {
+  return (
+    <div>
+      $0
+    </div>
+  )
+}
+
+endsnippet
+
+snippet react_component_functional_proptypes:react "Creates a React Functional Component with ES7 module system with PropTypes"
+import React from 'react'
+import PropTypes from 'prop-types'
+
+function ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}(props) {
+  return (
+    <div>
+      $0
+    </div>
+  )
+}
+
+${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}.propTypes = {
+
+}
+
+export default ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}
+
+
+endsnippet
+
+snippet react_component_arrow_function_export:react "Creates a React Arrow Function Component with ES7 module system"
+import React from 'react'
+
+const ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} = () => {
+  return (
+    <div>
+      $0
+    </div>
+  )
+}
+
+export default ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}
+
+endsnippet
+
+snippet react_component_arrow_function:react "Creates a React Arrow Function Component with ES7 module system"
+import React from 'react'
+
+export const ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} = () => {
+  return (
+    <div>
+      $0
+    </div>
+  )
+}
+
+endsnippet
+
+snippet react_component_arrow_function_proptypes:react "Creates a React Arrow Function Component with ES7 module system with PropTypes"
+import React from 'react'
+import PropTypes from 'prop-types'
+
+const ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} = props => {
+  return (
+    <div>
+      $0
+    </div>
+  )
+}
+
+${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}.propTypes = {
+
+}
+
+export default ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}
+
+endsnippet
+
+snippet react_component_class_export_proptypes:react "Creates a React component class with ES7 module system"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
+export class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} extends Component {
+  static propTypes = {
+
+  }
+
+  render() {
+    return (
+      <div>
+        $0
+      </div>
+    )
+  }
+}
+
+export default ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}
+
+endsnippet
+
+snippet react_component_class_pure:react "Creates a React pure component class with ES7 module system"
+import React, { PureComponent } from 'react'
+
+export default class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} extends PureComponent {
+  render() {
+    return (
+      <div>
+        $0
+      </div>
+    )
+  }
+}
+
+endsnippet
+
+snippet react_component_class_export_pure:react "Creates a React pure component class with ES7 module system export"
+import React, { PureComponent } from 'react'
+
+export class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} extends PureComponent {
+  render() {
+    return (
+      <div>
+        $0
+      </div>
+    )
+  }
+}
+
+export default ${1:$TM_FILENAME_BASE}
+
+endsnippet
+
+snippet react_component_class_pure_with_proptypes:react "Creates a React component class with ES7 module system"
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+
+export default class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} extends PureComponent {
+  static propTypes = {
+
+  }
+
+  render() {
+    return (
+      <div>
+        $0
+      </div>
+    )
+  }
+}
+
+endsnippet
+
+snippet react_component_function_memo:react "Creates a React Memo Function Component with ES7 module system"
+import React, { memo } from 'react'
+
+export default memo(function ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}() {
+  return (
+    <div>
+      $0
+    </div>
+  )
+})
+
+endsnippet
+
+snippet react_component_function_memo_proptypes:react "Creates a React Memo Function Component with ES7 module system with PropTypes"
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
+
+const ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} = memo(function ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}(props) {
+  return (
+    <div>
+      $0
+    </div>
+  )
+})
+
+${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}.propTypes = {
+
+}
+
+export default ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}
+
+endsnippet
+
+snippet react_component_class_proptypes:react "Creates a React component class with PropTypes and ES7 module system"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
+export default class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} extends Component {
+  static propTypes = {
+    ${2:prop}: ${3:PropTypes}
+  }
+
+  render() {
+    return (
+      <div>
+        $0
+      </div>
+    )
+  }
+}
+
+endsnippet
+
+snippet react_component_class_redux:react "Creates a React component class with connected redux and ES7 module system"
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+export class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} extends Component {
+  render() {
+    return (
+      <div>
+        $0
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = (state) => ({
+  
+})
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}})
+
+endsnippet
+
+snippet react_component_class_redux_proptypes:react "Creates a React component class with PropTypes with connected redux and ES7 module system"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
+export class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} extends Component {
+  static propTypes = {
+    ${2:prop}: ${3:PropTypes}
+  }
+
+  render() {
+    return (
+      <div>
+        $0
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = (state) => ({
+  
+})
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}})
+
+endsnippet
+
+snippet react_class_constructor:react "Adds a default constructor for it('', () => {})the class that contains props as arguments"
+constructor(props) {
+  super(props)
+
+  this.state = {
+     $0
+  }
+}
+
+endsnippet
+
+snippet react_empty_state:react "Creates empty state object. To be used in a constructor."
+state = {
+  $1
+}
+
+endsnippet
+
+snippet react_componentwillmount:react "DEPRECATED!!!. Invoked once, both on the client and server, immediately before the initial rendering occurs"
+componentWillMount() {
+  $0
+}
+
+endsnippet
+
+snippet react_componentdidmount:react "Invoked once, only on the client (not on the server), immediately after the initial rendering occurs."
+componentDidMount() {
+  $0
+}
+
+endsnippet
+
+snippet react_componentwillreceiveprops:react "DEPRECATED!!!. Invoked when a component is receiving new props. This method is not called for the initial render."
+componentWillReceiveProps(nextProps) {
+  $0
+}
+
+endsnippet
+
+snippet react_shouldcomponentupdate:react "Invoked before rendering when new props or state are being received. "
+shouldComponentUpdate(nextProps, nextState) {
+  $0
+}
+
+endsnippet
+
+snippet react_componentwillupdate:react "DEPRECATED!!!. Invoked immediately before rendering when new props or state are being received."
+componentWillUpdate(nextProps, nextState) {
+  $0
+}
+
+endsnippet
+
+snippet react_componentdidupdate:react "Invoked immediately after the component's updates are flushed to the DOM."
+componentDidUpdate(prevProps, prevState) {
+  $0
+}
+
+endsnippet
+
+snippet react_componentwillunmount:react "Invoked immediately before a component is unmounted from the DOM."
+componentWillUnmount() {
+  $0
+}
+
+endsnippet
+
+snippet react_getderivedstatefromprops:react "Invoked right before calling the render method, both on the initial mount and on subsequent updates."
+static getDerivedStateFromProps(props, state) {
+  ${1}
+}
+endsnippet
+
+snippet react_getsnapshotbeforeupdate:react "Called right before mutations are made (e.g. before the DOM is updated)"
+getSnapshotBeforeUpdate = (prevProps, prevState) => {
+  $0
+}
+
+endsnippet
+
+snippet react_component_render:react "Basic render."
+render() {
+  return (
+    <div>
+      $0
+    </div>
+  )
+}
+endsnippet
+
+snippet react_createcontext:react "Create React context"
+const ${1:contextName} = React.createContext()
+
+endsnippet
+
+snippet react_createref:react "Create ref statement used inside constructor"
+this.${1:refName}Ref = React.createRef()
+
+endsnippet
+
+snippet react_forwardref:react "Forward ref statement used inside component"
+const ref = React.createRef()
+
+endsnippet
+
+snippet react_componentsetstateobject:react "Performs a shallow merge of nextState into current state"
+this.setState({$0})
+endsnippet
+
+snippet react_component_setstate_func:react "Performs a shallow merge of nextState into current state"
+this.setState((state, props) => { return { $0 }})
+
+endsnippet
+
+snippet react_component_props:react "Access component's props"
+this.props.$0
+endsnippet
+
+snippet react_component_state:react "react-component-state"
+this.state.$0
+endsnippet
+
+snippet react_bind_this:react "Binds this to a method"
+this.${1:methodName} = this.${1:methodName}.bind(this)$0
+endsnippet
+
+snippet react_hoc:react "react-hoc"
+import React from 'react'
+import PropTypes from 'prop-types'
+
+export default (WrappedComponent) => {
+  const hocComponent = ({ ...props }) => <WrappedComponent {...props} />
+
+  hocComponent.propTypes = {
+  }
+
+  return hocComponent
+}
+
+endsnippet
+
+snippet react_usestate:react "react-usestate"
+const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:initialState})
+endsnippet
+
+snippet react_useeffect:react "react-useeffect"
+useEffect(() => {
+  ${1:effect}
+  return () => {
+    ${2:cleanup}
+  };
+}, [${3:input}])
+endsnippet
+
+snippet react_usecontext:react "react-usecontext"
+const ${1:context} = useContext(${2:contextValue})
+endsnippet
+
+snippet react_usecallback:react "react-usecallback"
+useCallback(
+  () => {
+    ${1:callback}
+  },
+  [${2:input}],
+)
+endsnippet
+
+snippet react_usememo:react "react-usememo"
+useMemo(() => ${1:function}, ${2:input})
+endsnippet
+
+snippet react_useref:react "react-useref"
+const ${1:ref} = useRef(${2:initialValue})
+endsnippet
+
+snippet react_useimperativehandle:react "react-useimperativehandle"
+useImperativeHandle(
+  ${1:ref},
+  () => {
+    ${2:handler}
+  },
+  [${3:input}],
+)
+endsnippet
+
+snippet react_usedebugvalue:react "react-usedebugvalue"
+useDebugValue(${1:value})
+endsnippet
+
+snippet react_uselayouteffect:react "react-uselayouteffect"
+useLayoutEffect(() => {
+  ${1:effect}
+  return () => {
+    ${2:cleanup}
+  };
+}, [${3:input}])
+endsnippet
+
