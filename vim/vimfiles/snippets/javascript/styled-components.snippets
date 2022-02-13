@@ -1,0 +1,107 @@
+
+# snipsnap
+# @link https://github.com/snipsnapdev/snipsnap
+
+snippet styled-components_import_styled:styled-components "import styled from 'styled-components'"
+import styled from 'styled-components';
+endsnippet
+
+snippet styled-components_import_styled_native':styled-components "import styled from 'styled-components/native'"
+import styled from 'styled-components/native';
+endsnippet
+
+snippet styled-components_import_createglobalstyle:styled-components "import { createGlobalStyle } from 'styled-components'"
+import { createGlobalStyle } from 'styled-components';
+endsnippet
+
+snippet styled-components_import_css:styled-components "import { css } from 'styled-components'"
+import { css } from 'styled-components';
+endsnippet
+
+snippet styled-components_import_withtheme:styled-components "import { withTheme } from 'styled-components'"
+import { withTheme } from 'styled-components';
+endsnippet
+
+snippet styled-components_component:styled-components "Styled-Component"
+const ${1} = styled.${2}`
+  ${3}
+`;
+endsnippet
+
+snippet styled-components_export_component:styled-components "Export styled-component"
+export const ${1} = styled.${2}`
+  ${3}
+`;
+endsnippet
+
+snippet styled-components_createglobalstyle:styled-components "createGlobalStyle"
+const Global${1} = createGlobalStyle`
+  ${2}
+`;
+endsnippet
+
+snippet styled-components_export_createglobalstyle:styled-components "Export createGlobalStyle"
+export const Global${1} = createGlobalStyle`
+  ${2}
+`;
+endsnippet
+
+snippet styled-components_component_from_existing:styled-components "Styled-Component from existing component"
+const ${1} = styled(${2})`
+  ${3}
+`;
+endsnippet
+
+snippet styled-components_export_component_from_existing:styled-components "Export styled-component from existing component"
+export const ${1} = styled(${2})`
+  ${3}
+`;
+endsnippet
+
+snippet styled-components_file:styled-components "Styled-Components file"
+import styled from 'styled-components';
+
+const ${1} = styled.${2}`
+  ${3}
+`;
+
+export default ${1};
+endsnippet
+
+snippet styled-components_themeprovider:styled-components "ThemeProvider"
+<ThemeProvider theme={${1}}>
+  ${2}
+</ThemeProvider>
+endsnippet
+
+snippet styled-components_theme:styled-components "styled-component theme"
+// Define what props.theme will look like
+const theme = {
+  ${1}: '${2}'
+};
+endsnippet
+
+snippet styled-components_component_with_attributes:styled-components "Styled-Component with attributes"
+const ${1} = styled.${2}.attrs({
+  ${3}: ${4}
+})`
+  ${5}
+`;
+endsnippet
+
+snippet styled-components_export_component_with_attributes:styled-components "Export styled-component with attributes"
+export const ${1} = styled.${2}.attrs({
+  ${3}: ${4}
+})`
+  ${5}
+`;
+endsnippet
+
+snippet styled-components_propstheme_inside_component:styled-components "Use props.theme inside styled-component"
+${({ theme }) => theme.$1};
+endsnippet
+
+snippet styled-components_props_inside_component:styled-components "Use props inside styled-component"
+${props => props.$1};
+endsnippet
+
