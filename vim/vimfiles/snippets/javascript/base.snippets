@@ -1,0 +1,510 @@
+
+# snipsnap
+# @link https://github.com/snipsnapdev/snipsnap
+
+snippet base_var:base "var assignment"
+var ${1:name} = ${2:value};
+endsnippet
+
+snippet base_let:base "let assignment"
+let ${1:name} = ${2:value};
+endsnippet
+
+snippet base_let_destruct_object:base "Object destructing"
+let {${1:name}} = ${2:value};
+endsnippet
+
+snippet base_let_destruct_array:base "Array destructing"
+let [${1:name}] = ${2:value};
+endsnippet
+
+snippet base_const:base "const assignment"
+const ${1:name} = ${2:value};
+endsnippet
+
+snippet base_const_destruct_object:base "Object destructing"
+const {${1:name}} = ${2:value};
+endsnippet
+
+snippet base_const_destruct_array:base "Array destructing"
+const [${2:propertyName}] = ${1:arrayToDestruct};
+endsnippet
+
+snippet base_if:base "if statement"
+if (${1:condition}) {
+  ${0}
+}
+endsnippet
+
+snippet base_else:base "else statement"
+else {
+  ${0}
+}
+endsnippet
+
+snippet base_if_else:base "if/else statement"
+if (${1:condition}) {
+  ${0}
+} else {
+  
+}
+endsnippet
+
+snippet base_else_if:base "else if statement"
+else if (${1:condition}) {
+  ${0}
+}
+endsnippet
+
+snippet base_ternary_operator:base "ternary operator"
+${1:condition} ? ${2:expression} : ${3:expression};
+endsnippet
+
+snippet base_for:base "for loop"
+for (let ${1:i} = 0, ${2:len} = ${3:iterable}.length; ${1:i} < ${2:len}; ${1:i}++) {
+  ${0}
+}
+endsnippet
+
+snippet base_for_reverse:base "reverse for loop"
+for (let ${1:i} = ${2:iterable}.length - 1; ${1:i} >= 0; ${1:i}--) {
+  ${0}
+}
+endsnippet
+
+snippet base_for_in:base "for in loop"
+for (let ${1:key} in ${2:array}) {
+  if (${2:array}.hasOwnProperty(${1:key})) {
+    ${0}
+  }
+}
+endsnippet
+
+snippet base_for_of:base "for of loop (ES6)"
+for (let ${1:key} of ${2:array}) {
+  ${0}
+}
+endsnippet
+
+snippet base_while:base "while loop"
+while (${1:condition}) {
+  ${0}
+}
+endsnippet
+
+snippet base_try_catch:base "try/catch"
+try {
+  ${0}
+} catch (${1:err}) {
+  
+}
+endsnippet
+
+snippet base_try_finally:base "try/finally"
+try {
+  ${0}
+} finally {
+  
+}
+endsnippet
+
+snippet base_try_catch_finally:base "try/catch/finally"
+try {
+  ${0}
+} catch (${1:err}) {
+  
+} finally {
+  
+}
+endsnippet
+
+snippet base_switch_case:base "switch case"
+switch (${1:expr}) {
+  case ${2:value}:
+    return $0;
+  default:
+    return;
+}
+endsnippet
+
+snippet base_function_anonymous:base "anonymous function"
+function (${1:arguments}) {
+  ${0}
+}
+endsnippet
+
+snippet base_function_named:base "named function"
+function ${1:name}(${2:arguments}) {
+  ${0}
+}
+endsnippet
+
+snippet base_function_immediate:base "immediately-invoked function expression (IIFE)"
+((${1:arguments}) => {
+  ${0}
+})(${2});
+endsnippet
+
+snippet base_function_apply:base "function apply"
+${1:fn}.apply(${2:this}, ${3:arguments})
+endsnippet
+
+snippet base_function_call:base "function call"
+${1:fn}.call(${2:this}, ${3:arguments})
+endsnippet
+
+snippet base_function_bind:base "function bind"
+${1:fn}.bind(${2:this}, ${3:arguments})
+endsnippet
+
+snippet base_function_arrow:base "arrow function (ES6)"
+(${1:arguments}) => ${2:statement}
+endsnippet
+
+snippet base_function_arrow_body:base "arrow function with body (ES6)"
+(${1:arguments}) => {
+  ${0}
+}
+endsnippet
+
+snippet base_function_generator:base "generator function (ES6)"
+function* (${1:arguments}) {
+  ${0}
+}
+endsnippet
+
+snippet base_function_generator_named:base "named generator function (ES6)"
+function* ${1:name}(${2:arguments}) {
+  ${0}
+}
+endsnippet
+
+snippet base_sequence_of:base "sequence of 0..n"
+[...Array(${1:length}).keys()]${0}
+endsnippet
+
+snippet base_foreach:base "forEach loop"
+${1}.forEach((${2:item}) => {
+  ${0}
+});
+endsnippet
+
+snippet base_map:base "map"
+${1}.map((${2:item}) => {
+  ${0}
+});
+endsnippet
+
+snippet base_reduce:base "reduce"
+${1}.reduce((${2:previous}, ${3:current}) => {
+  ${0}
+}${4:, initial});
+endsnippet
+
+snippet base_filter:base "filter"
+${1}.filter(${2:item} => {
+  ${0}
+});
+endsnippet
+
+snippet base_find:base "find"
+${1}.find(${2:item} => {
+  ${0}
+});
+endsnippet
+
+snippet base_class:base "class (ES6)"
+class ${1:name} {
+  constructor(${2:arguments}) {
+    ${0}
+  }
+}
+endsnippet
+
+snippet base_child_class:base "child class (ES6)"
+class ${1:name} extends ${2:base} {
+  constructor(${3:arguments}) {
+    super(${3:arguments});
+    ${0}
+  }
+}
+endsnippet
+
+snippet base_class_constructor:base "class constructor (ES6)"
+constructor(${1:arguments}) {
+  super(${1:arguments});${0}
+}
+endsnippet
+
+snippet base_method:base "method (ES6 syntax)"
+${1:method}(${2:arguments}) {
+  ${0}
+}
+endsnippet
+
+snippet base_getter:base "getter (ES6 syntax)"
+get ${1:property}() {
+  ${0}
+}
+endsnippet
+
+snippet base_setter:base "setter (ES6 syntax)"
+set ${1:property}(${2:value}) {
+  ${0}
+}
+endsnippet
+
+snippet base_getter_setter:base "getter and setter (ES6 syntax)"
+get ${1:property}() {
+  ${0}
+}
+set ${1:property}(${2:value}) {
+  
+}
+endsnippet
+
+snippet base_prototype_method:base "prototype method"
+${1:Class}.prototype.${2:method} = function(${3:arguments}) {
+  ${0}
+};
+endsnippet
+
+snippet base_object_assign:base "Object.assign"
+Object.assign(${1:dest}, ${2:source})
+endsnippet
+
+snippet base_object_assign_copy:base "Object.assign copy (shallow clone)"
+Object.assign({}, ${1:original}, ${2:source})
+endsnippet
+
+snippet base_return:base "return"
+return ${0};
+endsnippet
+
+snippet base_return_promise:base "return Promise (ES6)"
+return new Promise((resolve, reject) => {
+  ${0}
+});
+endsnippet
+
+snippet base_return_complex_value:base "return complex value (such as JSX components)"
+return (
+  ${0}
+);
+endsnippet
+
+snippet base_typeof:base "typeof"
+typeof ${1:source} === '${2:undefined}'
+endsnippet
+
+snippet base_instanceof:base "instanceof"
+${1:source} instanceof ${2:Object}
+endsnippet
+
+snippet base_promise:base "Promise (ES6)"
+new Promise((resolve, reject) => {
+  ${0}
+})
+endsnippet
+
+snippet base_promise_then:base "Promise.then"
+${1:promise}.then((${2:value}) => {
+  ${0}
+})
+endsnippet
+
+snippet base_promise_catch:base "Promise.catch"
+${1:promise}.catch((${2:err}) => {
+  ${0}
+})
+endsnippet
+
+snippet base_export_named_variable:base "Export named variable in ES6 syntax"
+export const ${1:exportVariable} = ${2:localVariable};
+
+endsnippet
+
+snippet base_export_named_function:base "Export named function in ES6 syntax"
+export const ${1:functionName} = (${2:params}) => {
+  $0
+};
+
+endsnippet
+
+snippet base_export_default_function:base "Export default function in ES6 syntax"
+export default function ${1:${TM_FILENAME_BASE}}(${2:params}) {
+  $0
+};
+
+endsnippet
+
+snippet base_export_class:base "Export default class in ES6 syntax"
+export default class ${1:className} {
+  $0
+};
+
+endsnippet
+
+snippet base_export_class_extends:base "Export default class which extends a base one in ES6 syntax"
+export default class ${1:className} extends ${2:baseclassName} {
+  $0
+};
+
+endsnippet
+
+snippet base_import:base "Imports entire module statement in ES6 syntax"
+import ${2:moduleName} from '${1:module}';$0
+endsnippet
+
+snippet base_import_no_module_name:base "Imports entire module in ES6 syntax without module name"
+import '${1:module}';$0
+endsnippet
+
+snippet base_import_destructing:base "Imports only a portion of the module in ES6 syntax"
+import { $2 } from '${1:module}';$0
+endsnippet
+
+snippet base_import_everything:base "Imports everything as alias from the module in ES6 syntax"
+import * as ${2:alias} from '${1:module}';$0
+endsnippet
+
+snippet base_import_as:base "Imports a specific portion of the module by assigning a local alias in ES6 syntax"
+import { ${2:originalName} as ${3:alias} } from '${1:module}';$0
+endsnippet
+
+snippet base_require:base "require"
+require('${1:module}');
+endsnippet
+
+snippet base_require_local:base "require local"
+require('./${1:module}');
+endsnippet
+
+snippet base_require_assignment:base "require assignment"
+const ${1:module} = require('${1:module}');
+endsnippet
+
+snippet base_require_assignment_local:base "require assignment local"
+const ${1:module} = require('./${1:module}');
+endsnippet
+
+snippet base_require_assignment:base "destructuring require assignment"
+const {${1:module}} = require('${1:module}');
+endsnippet
+
+snippet base_require_assignment_local_destruct:base "destructuring require assignment local"
+const {${1:module}} = require('./${1:module}');
+endsnippet
+
+snippet base_exports_member:base "exports.member"
+exports.${1:member} = ${2:value};
+endsnippet
+
+snippet base_module_exports:base "module.exports"
+module.exports = ${1:name};
+endsnippet
+
+snippet base_module_exports_object:base "module exports object"
+module.exports = {
+  ${1:member}
+};
+endsnippet
+
+snippet base_event_handler:base "event handler"
+${1:emitter}.on('${2:event}', (${3:arguments}) => {
+  ${0}
+});
+endsnippet
+
+snippet base_console_assert:base "If the specified expression is false, the message is written to the console along with a stack trace"
+console.assert(${1:expression}, ${2:object});
+endsnippet
+
+snippet base_console_clear:base "Clears the console"
+console.clear();
+endsnippet
+
+snippet base_console_count:base "Writes the the number of times that count() has been invoked at the same line and with the same label"
+console.count(${1:label});
+endsnippet
+
+snippet base_console_debug:base "Displays a message in the console. Also display a blue right arrow icon along with the logged message in Safari"
+console.debug(${1:object});
+endsnippet
+
+snippet base_console_dir:base "Prints a JavaScript representation of the specified object"
+console.dir(${1:object});
+endsnippet
+
+snippet base_console_error:base "Displays a message in the console and also includes a stack trace from where the method was called"
+console.error(${1:object});
+endsnippet
+
+snippet base_console_group:base "Groups and indents all following output by an additional level, until console.groupEnd() is called."
+console.group('${1:label}');
+endsnippet
+
+snippet base_console_group_end:base "Closes out the corresponding console.group()."
+console.groupEnd();
+endsnippet
+
+snippet base_console_log:base "Displays a message in the console"
+console.log(${1:object});
+endsnippet
+
+snippet base_console_log_object:base "Displays an object in the console with its name"
+console.log('${1:object} :>> ', ${1:object});
+endsnippet
+
+snippet base_console_trace:base "Prints a stack trace from the point where the method was called"
+console.trace(${1:object});
+endsnippet
+
+snippet base_console_warn:base "Displays a message in the console but also displays a yellow warning icon along with the logged message"
+console.warn(${1:object});
+endsnippet
+
+snippet base_console_info:base "Displays a message in the console but also displays a blue information icon along with the logged message"
+console.info(${1:object});
+endsnippet
+
+snippet base_console_table:base "Displays tabular data as a table."
+console.table(${1:object});
+endsnippet
+
+snippet base_console_time:base "Sets starting point for execution time measurement"
+console.time(${1:object});
+endsnippet
+
+snippet base_console_time_end:base "Sets end point for execution time measurement"
+console.timeEnd(${1:object});
+endsnippet
+
+snippet base_set_timeout:base "setTimeout"
+setTimeout(() => {
+  ${0}
+}, ${1:delay});
+endsnippet
+
+snippet base_set_interval:base "setInterval"
+setInterval(() => {
+  ${0}
+}, ${1:delay});
+endsnippet
+
+snippet base_set_immediate:base "setImmediate"
+setImmediate(() => {
+  ${0}
+});
+endsnippet
+
+snippet base_process_next_tick:base "process nextTick"
+process.nextTick(() => {
+  ${0}
+});
+endsnippet
+
+snippet base_use_strict:base "insert 'use strict' statement"
+'use strict';
+endsnippet
+
