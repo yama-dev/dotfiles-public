@@ -1,0 +1,782 @@
+
+# vscode-standardjs-snippets
+# @link https://github.com/capaj/vscode-standardjs-snippets
+
+snippet st:standardjs "setTimeout"
+setTimeout(() => {
+  ${0}
+}, ${1:delay})
+endsnippet
+
+snippet si:standardjs "setInterval"
+setInterval(() => {
+  ${0}
+}, ${1:delay})
+endsnippet
+
+snippet sim:standardjs "setImmediate"
+setImmediate(() => {
+  ${0}
+})
+endsnippet
+
+snippet a:standardjs "await"
+await ${0}
+endsnippet
+
+snippet apa:standardjs "await Promise.all"
+await Promise.all(${1:value})
+endsnippet
+
+snippet apad:standardjs "await Promise.all with destructuring"
+const [${0}] = await Promise.all(${1:value})
+endsnippet
+
+snippet apm:standardjs "await Promise.all map"
+await Promise.all(${1:array}.map(async (${2:value}) => {
+  ${0}
+}))
+endsnippet
+
+snippet ast:standardjs "await sleep"
+await new Promise((r) => setTimeout(r, ${0}))
+endsnippet
+
+snippet cb:standardjs "Node callback"
+function (err, ${1:value}) {
+  if (err) throw err
+  ${0}
+}
+endsnippet
+
+snippet pe:standardjs "process.env"
+process.env
+endsnippet
+
+snippet pa:standardjs "Promise.all"
+Promise.all(${1:value})
+endsnippet
+
+snippet prs:standardjs "Promise.resolve"
+Promise.resolve(${1:value})
+endsnippet
+
+snippet prj:standardjs "Promise.reject"
+Promise.reject(${1:value})
+endsnippet
+
+snippet p:standardjs "Promise"
+Promise
+endsnippet
+
+snippet np:standardjs "new Promise"
+new Promise((resolve, reject) => {
+  ${0}
+})
+endsnippet
+
+snippet pt:standardjs "Promise.then"
+${1:promise}.then((${2:value}) => {
+  ${0}
+})
+endsnippet
+
+snippet pc:standardjs "Promise.catch"
+${1:promise}.catch(error => {
+  ${0}
+})
+endsnippet
+
+snippet desc:standardjs "describe"
+describe('${1:description}', () => {
+  ${0}
+})
+endsnippet
+
+snippet dt:standardjs "describe top level"
+describe('${TM_FILENAME_BASE}', () => {
+  ${0}
+})
+endsnippet
+
+snippet it:standardjs "it asynchronous"
+it('${1:description}', async () => {
+  ${0}
+})
+endsnippet
+
+snippet itt:standardjs "it.todo"
+it.todo('${1:description}')
+endsnippet
+
+snippet itd:standardjs "it with a callback"
+it('${1:description}', (done) => {
+  ${0}
+})
+endsnippet
+
+snippet its:standardjs "it synchronous"
+it('${1:description}', () => {
+  ${0}
+})
+endsnippet
+
+snippet bf:standardjs "before"
+before(async () => {
+  ${0}
+})
+endsnippet
+
+snippet ba:standardjs "beforeAll"
+beforeAll(async () => {
+  ${0}
+})
+endsnippet
+
+snippet bfe:standardjs "beforeEach"
+beforeEach(async () => {
+  ${0}
+})
+endsnippet
+
+snippet aft:standardjs "after"
+after(() => {
+  ${0}
+})
+endsnippet
+
+snippet afe:standardjs "afterEach"
+afterEach(() => {
+  ${0}
+})
+endsnippet
+
+snippet rq:standardjs "require"
+require('${1:module}')
+endsnippet
+
+snippet cr:standardjs "const module = require('module')"
+const ${1:module} = require('${1:module}')
+endsnippet
+
+snippet em:standardjs "exports.member"
+exports.${1:member} = ${2:value}
+endsnippet
+
+snippet me:standardjs "module.exports"
+module.exports = ${1:name}
+endsnippet
+
+snippet mec:standardjs "module as class"
+class ${1:name} {
+  constructor (${2:arguments}) {
+    ${0}
+  }
+}
+
+module.exports = ${1:name}
+
+endsnippet
+
+snippet on:standardjs "event handler"
+${1:emitter}.on('${2:event}', (${3:arguments}) => {
+  ${0}
+})
+endsnippet
+
+snippet evc:standardjs "dom event cancel default and propagation"
+ev.preventDefault()
+ev.stopPropagation()
+return false
+endsnippet
+
+snippet ae:standardjs "addEventListener"
+${1:document}.addEventListener('${2:event}', ${3:ev} => {
+  ${0}
+})
+endsnippet
+
+snippet rel:standardjs "removeEventListener"
+${1:document}.removeEventListener('${2:event}', ${3:listener})
+endsnippet
+
+snippet gi:standardjs "getElementById"
+${1:document}.getElementById('${2:id}')
+endsnippet
+
+snippet gc:standardjs "getElementsByClassName"
+Array.from(${1:document}.getElementsByClassName('${2:class}'))
+endsnippet
+
+snippet gt:standardjs "getElementsByTagName"
+Array.from(${1:document}.getElementsByTagName('${2:tag}'))
+endsnippet
+
+snippet qs:standardjs "querySelector"
+${1:document}.querySelector('${2:selector}')
+endsnippet
+
+snippet qsa:standardjs "querySelectorAll"
+Array.from(${1:document}.querySelectorAll('${2:selector}'))
+endsnippet
+
+snippet cdf:standardjs "createDocumentFragment"
+${1:document}.createDocumentFragment(${2:elem})
+endsnippet
+
+snippet cel:standardjs "createElement"
+${1:document}.createElement(${2:elem})
+endsnippet
+
+snippet hecla:standardjs "classList.add"
+${1:el}.classList.add('${2:class}')
+endsnippet
+
+snippet heclr:standardjs "classList.remove"
+${1:el}.classList.remove('${2:class}')
+endsnippet
+
+snippet hect:standardjs "classList.toggle"
+${1:el}.classList.toggle('${2:class}')
+endsnippet
+
+snippet hega:standardjs "getAttribute"
+${1:el}.getAttribute('${2:attr}')
+endsnippet
+
+snippet hera:standardjs "removeAttribute"
+${1:el}.removeAttribute('${2:attr}')
+endsnippet
+
+snippet hesa:standardjs "setAttribute"
+${1:el}.setAttribute('${2:attr}', ${3:value})
+endsnippet
+
+snippet heac:standardjs "appendChild"
+${1:el}.appendChild(${2:elem})
+endsnippet
+
+snippet herc:standardjs "removeChild"
+${1:el}.removeChild(${2:elem})
+endsnippet
+
+snippet fe:standardjs "forEach loop"
+${1:iterable}.forEach((${2:item}) => {
+  ${0}
+})
+endsnippet
+
+snippet map:standardjs "map"
+${1:iterable}.map((${2:item}) => {
+  ${0}
+})
+endsnippet
+
+snippet mapsd:standardjs "map single desctructured argument"
+${1:iterable}.map(({${2:item}}) => ${2:item})
+endsnippet
+
+snippet reduce:standardjs "reduce"
+${1:iterable}.reduce((${2:previous}, ${3:current}) => {
+  ${0}
+}${4:, initial})
+endsnippet
+
+snippet filter:standardjs "filter"
+${1:iterable}.filter((${2:item}) => {
+  ${0}
+})
+endsnippet
+
+snippet find:standardjs "find"
+${1:iterable}.find((${2:item}) => {
+  ${0}
+})
+endsnippet
+
+snippet every:standardjs "every"
+${1:iterable}.every((${2:item}) => {
+  ${0}
+})
+endsnippet
+
+snippet some:standardjs "some"
+${1:iterable}.some((${2:item}) => {
+  ${0}
+})
+endsnippet
+
+snippet v:standardjs "var statement"
+var ${1:name}
+endsnippet
+
+snippet va:standardjs "var assignment"
+var ${1:name} = ${2:value}
+endsnippet
+
+snippet l:standardjs "let statement"
+let ${1:name}
+endsnippet
+
+snippet c:standardjs "const statement"
+const ${1:name}
+endsnippet
+
+snippet cd:standardjs "const statement from destructuring"
+const { ${2:prop} } = ${1:value}
+endsnippet
+
+snippet cad:standardjs "const statement from array destructuring"
+const [ ${2:prop} ] = ${1:value}
+endsnippet
+
+snippet ca:standardjs "const assignment awaited"
+const ${1:name} = await ${2:value}
+endsnippet
+
+snippet cda:standardjs "const destructuring assignment awaited"
+const { ${1:name} } = await ${2:value}
+endsnippet
+
+snippet cf:standardjs "const arrow function assignment"
+const ${1:name} = (${2:arguments}) => {
+  return ${0}
+}
+endsnippet
+
+snippet la:standardjs "let assignment awaited"
+let ${1:name} = await ${2:value}
+endsnippet
+
+snippet cy:standardjs "const assignment yielded"
+const ${1:name} = yield ${2:value}
+endsnippet
+
+snippet ly:standardjs "let assignment yielded"
+let ${1:name} = yield ${2:value}
+endsnippet
+
+snippet co:standardjs "const object"
+const ${1:name} = {
+  ${0}
+}
+endsnippet
+
+snippet car:standardjs "const array"
+const ${1:name} = [
+  ${0}
+]
+endsnippet
+
+snippet gari:standardjs "generate array of integers starting with 1"
+Array.from({ length: ${1:length} }, (v, k) => k + 1)
+endsnippet
+
+snippet gari0:standardjs "generate array of integers starting with 0"
+[...Array(${1:length}).keys()]
+endsnippet
+
+snippet cs:standardjs "class"
+class ${1:name} {
+  constructor (${2:arguments}) {
+    ${0}
+  }
+}
+endsnippet
+
+snippet csx:standardjs "class extends"
+class ${1:name} extends ${2:base} {
+  constructor (${3:arguments}) {
+    super(${3:arguments})
+    ${0}
+  }
+}
+endsnippet
+
+snippet e:standardjs "module export"
+export ${1:member}
+endsnippet
+
+snippet ec:standardjs "module export const"
+export const ${1:member} = ${2:value}
+endsnippet
+
+snippet ef:standardjs "export named function"
+export function ${1:member} (${2:arguments}) {
+  ${0}
+}
+endsnippet
+
+snippet ed:standardjs "module default export"
+export default ${1:member}
+endsnippet
+
+snippet edf:standardjs "module default export function"
+export default function ${1:name} (${2:arguments}) {
+  ${0}
+}
+endsnippet
+
+snippet im:standardjs "import module"
+import ${2:*} from '${1:module}'
+endsnippet
+
+snippet ia:standardjs "import module as"
+import ${2:*} as ${3:name} from '${1:module}'
+endsnippet
+
+snippet imd:standardjs "import module destructured"
+import {$2} from '${1:module}'
+endsnippet
+
+snippet to:standardjs "typeof"
+typeof ${1:source} === '${2:undefined}'
+endsnippet
+
+snippet t:standardjs "this"
+this.
+endsnippet
+
+snippet iof:standardjs "instanceof"
+${1:source} instanceof ${2:Object}
+endsnippet
+
+snippet ia:standardjs "Array.isArray()"
+Array.isArray(${1:source})
+endsnippet
+
+snippet lif:standardjs "let and if statement"
+let ${0} 
+ if (${2:condition}) {
+  ${1}
+}
+endsnippet
+
+snippet i:standardjs "if statement"
+if (${1:condition}) {
+  ${0}
+}
+endsnippet
+
+snippet el:standardjs "else statement"
+else {
+  ${0}
+}
+endsnippet
+
+snippet ife:standardjs "if/else statement"
+if (${1:condition}) {
+  ${0}
+} else {
+  
+}
+endsnippet
+
+snippet ei:standardjs "else if statement"
+else if (${1:condition}) {
+  ${0}
+}
+endsnippet
+
+snippet fl:standardjs "for loop"
+for (let ${1:i} = 0, ${2:len} = ${3:iterable}.length; ${1:i} < ${2:len}; ${1:i}++) {
+  ${0}
+}
+endsnippet
+
+snippet fi:standardjs "for in loop"
+for (let ${1:key} in ${2:source}) {
+  if (${2:source}.hasOwnProperty(${1:key})) {
+    ${0}
+  }
+}
+endsnippet
+
+snippet fo:standardjs "for of loop"
+for (const ${1:key} of ${2:source}) {
+  ${0}
+}
+endsnippet
+
+snippet wid:standardjs "while iteration decrementing"
+let ${1:array}Index = ${1:array}.length
+while (${1:array}Index--) {
+  ${0}
+}
+endsnippet
+
+snippet wl:standardjs "while loop"
+while (${1:condition}) {
+  ${0}
+}
+endsnippet
+
+snippet tn:standardjs "throw new Error"
+throw new ${0:error}
+endsnippet
+
+snippet tc:standardjs "try/catch"
+try {
+  ${0}
+} catch (${1:err}) {
+  
+}
+endsnippet
+
+snippet tf:standardjs "try/finally"
+try {
+  ${0}
+} finally {
+  
+}
+endsnippet
+
+snippet tcf:standardjs "try/catch/finally"
+try {
+  ${0}
+} catch (${1:err}) {
+  
+} finally {
+  
+}
+endsnippet
+
+snippet fan:standardjs "anonymous function"
+function (${1:arguments}) {${0}}
+endsnippet
+
+snippet fn:standardjs "named function"
+function ${1:name} (${2:arguments}) {
+  ${0}
+}
+endsnippet
+
+snippet asf:standardjs "async function"
+async function (${1:arguments}) {
+  ${0}
+}
+endsnippet
+
+snippet aa:standardjs "async arrow function"
+async (${1:arguments}) => {
+  ${0}
+}
+endsnippet
+
+snippet iife:standardjs "immediately-invoked function expression"
+;(function (${1:arguments}) {
+  ${0}
+})(${2})
+endsnippet
+
+snippet aiife:standardjs "async immediately-invoked function expression"
+;(async (${1:arguments}) => {
+  ${0}
+})(${2})
+endsnippet
+
+snippet af:standardjs "arrow function"
+(${1:arguments}) => ${2:statement}
+endsnippet
+
+snippet afi:standardjs "identity arrow function"
+(v) => v
+endsnippet
+
+snippet fd:standardjs "arrow function with destructuring"
+({${1:arguments}}) => ${2:statement}
+endsnippet
+
+snippet fdr:standardjs "arrow function with destructuring returning destructured"
+({${1:arguments}}) => ${1:arguments}
+endsnippet
+
+snippet f:standardjs "arrow function with body"
+(${1:arguments}) => {
+  ${0}
+}
+endsnippet
+
+snippet fro:standardjs "arrow function returning single object"
+(${1:arguments}) => ({
+  ${0}
+})
+endsnippet
+
+snippet fr:standardjs "arrow function with return"
+(${1:arguments}) => {
+  return ${0}
+}
+endsnippet
+
+snippet gf:standardjs "generator function"
+function* (${1:arguments}) {
+  ${0}
+}
+endsnippet
+
+snippet gfn:standardjs "named generator"
+function* ${1:name}(${2:arguments}) {
+  ${0}
+}
+endsnippet
+
+snippet cl:standardjs "console.log"
+console.log(${0})
+endsnippet
+
+snippet cv:standardjs "console.log a variable"
+console.log('${0}:', ${0})
+endsnippet
+
+snippet ce:standardjs "console.error"
+console.error(${0})
+endsnippet
+
+snippet cw:standardjs "console.warn"
+console.warn(${0})
+endsnippet
+
+snippet cod:standardjs "console.dir"
+console.dir('${0}:', ${0})
+endsnippet
+
+snippet cn:standardjs "constructor"
+constructor () {
+  ${0}
+}
+endsnippet
+
+snippet uss:standardjs "use strict"
+'use strict'
+endsnippet
+
+snippet js:standardjs "JSON.stringify()"
+JSON.stringify($0)
+endsnippet
+
+snippet jp:standardjs "JSON.parse()"
+JSON.parse($0)
+endsnippet
+
+snippet m:standardjs "method"
+${1:method} (${2:arguments}) {
+  ${0}
+}
+endsnippet
+
+snippet get:standardjs "getter"
+get ${1:property} () {
+  ${0}
+}
+endsnippet
+
+snippet set:standardjs "setter"
+set ${1:property} (${2:value}) {
+  ${0}
+}
+endsnippet
+
+snippet gs:standardjs "getter + setter"
+get ${1:property} () {
+  ${0}
+}
+set ${1:property} (${2:value}) {
+  
+}
+endsnippet
+
+snippet proto:standardjs "prototype method"
+${1:Class}.prototype.${2:method} = function (${3:arguments}) {
+  ${0}
+}
+endsnippet
+
+snippet oa:standardjs "Object.assign"
+Object.assign(${1:dest}, ${2:source})
+endsnippet
+
+snippet oc:standardjs "Object.create"
+Object.create(${1:obj})
+endsnippet
+
+snippet og:standardjs "Object.getOwnPropertyDescriptor"
+Object.getOwnPropertyDescriptor(${1:obj}, '${2:prop}')
+endsnippet
+
+snippet te:standardjs "ternary"
+${1:cond} ? ${2:true} : ${3:false}
+endsnippet
+
+snippet ta:standardjs "ternary assignment"
+const ${0} = ${1:cond} ? ${2:true} : ${3:false}
+endsnippet
+
+snippet od:standardjs "Object.defineProperty"
+Object.defineProperty(${1:dest}, '${2:prop}', {
+  ${0}
+})
+endsnippet
+
+snippet ok:standardjs "Object.keys"
+Object.keys(${1:obj})
+endsnippet
+
+snippet ov:standardjs "Object.values"
+Object.values(${1:obj})
+endsnippet
+
+snippet oe:standardjs "Object.entries"
+Object.entries(${1:obj})
+endsnippet
+
+snippet r:standardjs "return"
+return ${0}
+endsnippet
+
+snippet rf:standardjs "return arrow function"
+return (${1:arguments}) => ${2:statement}
+endsnippet
+
+snippet y:standardjs "yield"
+yield ${0}
+endsnippet
+
+snippet rt:standardjs "return this"
+return this
+endsnippet
+
+snippet rn:standardjs "return null"
+return null
+endsnippet
+
+snippet ro:standardjs "return new object"
+return {
+  ${0}
+}
+endsnippet
+
+snippet ra:standardjs "return new array"
+return [
+  ${0}
+]
+endsnippet
+
+snippet rp:standardjs "return promise"
+return new Promise((resolve, reject) => {
+  ${0}
+})
+endsnippet
+
+snippet wrap_selection_in_arrow_function:standardjs "wraps text in arrow function"
+() => {
+  {$TM_SELECTED_TEXT}
+}
+endsnippet
+
+snippet wrap_selection_in_async_arrow_function:standardjs "wraps text in arrow function"
+async () => {
+  {$TM_SELECTED_TEXT}
+}
+endsnippet
+
