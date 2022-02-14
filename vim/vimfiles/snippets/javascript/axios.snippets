@@ -1,0 +1,85 @@
+
+# snipsnap
+# @link https://github.com/snipsnapdev/snipsnap
+
+snippet axios_require:axios "require axios"
+const axios = require('axios').default;
+endsnippet
+
+snippet axios_import:axios "import axios"
+import axios from 'axios';
+endsnippet
+
+snippet axios_get_promise:axios "Use Axios to make a get request - promise based"
+axios.get('${1:uri}')
+.then(function (response) {
+  ${2:success}
+})
+.catch(function (error) {
+  ${3:error}
+})
+endsnippet
+
+snippet axios_get_async_await:axios "Use Axios to make a get request - async-await"
+async function ${1:name}() {
+  try {
+    const response = await axios.get('${2:uri}');
+    ${3:success}
+  }  catch (error) {
+    ${4:error}
+  }
+}
+endsnippet
+
+snippet axios_post_promise:axios "Use Axios to make a post request - promise based"
+axios.post('${1:uri}', ${2:post})
+.then(function (response) {
+  ${3:success}
+})
+.catch(function (error) {
+  ${4:error}
+})
+endsnippet
+
+snippet axios_post_async_await:axios "Use Axios to make a post request - async-await"
+async function ${1:name}() {
+  try {
+    const response = await axios.post('${2:uri}', ${3:post});
+    ${4:success}
+  }  catch (error) {
+    ${5:error}
+  }
+}
+endsnippet
+
+snippet axios_instance:axios "Create an Axios instance for requests"
+const ${1:instance} = axios.create({
+  baseURL: '${2:uri}',
+  timeout: $3,
+  headers: {'${4:key}': '${5:value}'}
+endsnippet
+
+snippet axios_defaults:axios "Define global axios defaults, eg. baseURL, headers etc."
+axios.defaults.${1:key} = '${2:value}';
+endsnippet
+
+snippet axios_interceptors_request:axios "You can intercept requests before they are handled by then or catch."
+axios.interceptors.request.use(function (config) {
+  ${1:do something}
+return config;
+}, function (error) {
+  ${2:do something}
+$return Promise.reject(error);
+});
+endsnippet
+
+snippet axios_interceptors_response:axios "You can intercept responses before they are handled by then or catch."
+axios.interceptors.response.use(function (response) {
+  ${1:do something}
+return response;
+}, function (error) {
+  ${2:do something}
+$return Promise.reject(error);
+});
+endsnippet
+

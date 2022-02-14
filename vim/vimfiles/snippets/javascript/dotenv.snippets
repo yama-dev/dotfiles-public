@@ -1,0 +1,20 @@
+
+# snipsnap
+# @link https://github.com/snipsnapdev/snipsnap
+
+snippet dotenv_require:dotenv "As early as possible in your application, require and configure dotenv."
+require('dotenv').config()
+endsnippet
+
+snippet dotenv_path:dotenv "You may specify a custom path if your file containing environment variables is located elsewhere."
+require('dotenv').config({ path: '${1:/full/custom/path/to/your/env/vars}' })
+endsnippet
+
+snippet dotenv_encoding:dotenv "You may specify the encoding of your file containing environment variables."
+require('dotenv').config({ encoding: '${1:latin1}' })
+endsnippet
+
+snippet dotenv_debug:dotenv "You may turn on logging to help debug why certain keys or values are not being set as you expect."
+require('dotenv').config({ debug: ${1|true,false|} })
+endsnippet
+
